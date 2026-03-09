@@ -604,7 +604,7 @@ function calcAccom(people){
 
   const infra = tentC+mepC+hvacC;
   const qH=Math.floor(people/2);
-  const furn=qH*pB+qH*pLk+people*pM+people*pLi+people*pP+people*pBl;
+  const furn=qH*pB+qH*pLk+people*pM+(people*2)*pLi+people*pP+(people*2)*pBl;
 
   setText('a_area',fN(areaPerTent));
   aV('a_tentC',tentC);aV('a_mepC',mepC);aV('a_hvacC',hvacC);
@@ -621,7 +621,7 @@ function calcAccom(people){
   setText('a_rMat',fN(people));
   setText('a_rLin',fN(people));
   setText('a_rPil',fN(people));
-  setText('a_rBla',fN(people));
+  setText('a_rBla',fN(people*2));
 
   return infra+furn;
 }
