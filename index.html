@@ -25,8 +25,6 @@ html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--ink);font-family:var(--sans);min-height:100vh;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
 body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.55' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
 .page{position:relative;z-index:1}
-
-/* ═══ MASTHEAD (sticky) ═══ */
 .mh{background:var(--navy);color:var(--white);position:sticky;top:0;z-index:200;transition:box-shadow .3s}
 .mh.scrolled{box-shadow:0 4px 24px rgba(5,28,44,.25)}
 .mh::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold) 25%,var(--teal) 25% 50%,var(--blue) 50% 75%,var(--orange) 75%)}
@@ -40,8 +38,6 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .mh-cl{font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1px}
 .mh-cv{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--gold)}
 .mh-cu{font-size:10px;color:rgba(255,255,255,.35);margin-left:3px}
-
-/* ═══ TAB NAV ═══ */
 .tabs{background:var(--white);border-bottom:1px solid var(--w1);position:sticky;top:56px;z-index:190;box-shadow:var(--sh-s)}
 .tabs-in{max-width:1160px;margin:0 auto;padding:0 40px;display:flex;gap:0;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
 .tabs-in::-webkit-scrollbar{display:none}
@@ -49,20 +45,14 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .tab:hover{color:var(--w4)}
 .tab.active{color:var(--navy);border-bottom-color:var(--navy)}
 .tab .tab-cost{font-family:var(--serif);font-size:10px;font-weight:700;color:var(--gold);margin-left:6px;transition:all .3s}
-
-/* ═══ SECTIONS ═══ */
 .section{display:none;max-width:1160px;margin:0 auto;padding:28px 40px 60px}
 .section.active{display:block}
-
-/* ═══ PANELS ═══ */
 .pnl{background:var(--white);border:1px solid var(--w1);border-radius:3px;margin-bottom:20px;box-shadow:var(--sh-s);overflow:hidden;opacity:0;transform:translateY(16px);animation:pnlIn .45s var(--eo) forwards}
 .pnl-h{padding:18px 24px 14px;border-bottom:1px solid var(--w1);display:flex;align-items:center;gap:12px}
 .pnl-n{font-family:var(--serif);font-size:10px;font-weight:700;color:var(--white);background:var(--navy);width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0}
 .pnl-t{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--navy)}
 .pnl-s{font-size:10px;color:var(--w3);margin-left:auto;font-style:italic}
 .pnl-b{padding:22px 24px 24px}
-
-/* ═══ INPUTS ═══ */
 .ig{display:grid;gap:16px}
 .ig-5{grid-template-columns:2fr 1fr 1fr 1fr 1fr}
 .ig-3{grid-template-columns:1fr 1fr 1fr}
@@ -73,14 +63,10 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .ic:focus{border-color:var(--navy);border-left-color:var(--navy);background:var(--white);box-shadow:0 0 0 3px rgba(5,28,44,.06)}
 .ic::placeholder{color:var(--w3);font-family:var(--sans);font-size:12px;font-style:italic}
 select.ic{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a746b' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
-
-/* ═══ SHIFT BANNER ═══ */
 .shift-b{display:flex;align-items:center;gap:14px;background:var(--off-white);border:1px solid var(--w1);border-radius:2px;padding:12px 18px;margin-top:16px}
 .shift-badge{font-family:var(--serif);font-size:11px;font-weight:700;color:var(--white);background:var(--orange);padding:4px 10px;border-radius:2px;white-space:nowrap}
 .shift-info{font-size:11px;color:var(--w4)}
 .shift-info strong{font-family:var(--serif);color:var(--ink)}
-
-/* ═══ COST TILES ═══ */
 .cr{display:grid;gap:12px}
 .cr-3{grid-template-columns:1fr 1fr 1fr}
 .cr-2{grid-template-columns:1fr 1fr}
@@ -98,8 +84,6 @@ select.ic{cursor:pointer;-webkit-appearance:none;appearance:none;background-imag
 .ct.c-furn-o .ct-v{color:var(--orange);font-size:20px}
 .ct-bar{height:3px;background:var(--w1);border-radius:2px;margin-top:10px;overflow:hidden}
 .ct-bar-f{height:100%;border-radius:2px;transition:width .6s var(--eo);width:0}
-
-/* ═══ REQ GRID ═══ */
 .rg{display:grid;gap:0;border:1px solid var(--w1);border-radius:2px;overflow:hidden}
 .rg-4{grid-template-columns:repeat(4,1fr)}
 .rg-3{grid-template-columns:repeat(3,1fr)}
@@ -117,8 +101,6 @@ select.ic{cursor:pointer;-webkit-appearance:none;appearance:none;background-imag
 .rc-q{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--charcoal);line-height:1;margin-bottom:4px}
 .rc-n{font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--w4)}
 .rc-s{font-size:7px;color:var(--w3);margin-top:2px;font-style:italic}
-
-/* ═══ ASSUMPTIONS ═══ */
 .ag{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .at{background:var(--off-white);border:1px solid var(--w1);border-radius:2px;padding:12px 14px}
 .at label{font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--w3);display:block;margin-bottom:4px}
@@ -136,8 +118,6 @@ select.ic{cursor:pointer;-webkit-appearance:none;appearance:none;background-imag
 .ft label{font-size:7px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--w3);display:block;margin-bottom:3px}
 .ft input{width:100%;background:var(--off-white);border:1px solid var(--w2);border-radius:1px;padding:5px 7px;font-family:var(--serif);font-size:12px;color:var(--ink);outline:none;transition:all .2s}
 .ft input:focus{border-color:var(--teal);box-shadow:0 0 0 2px rgba(26,122,109,.06)}
-
-/* ═══ WATERFALL ═══ */
 .wf-r{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--w1)}
 .wf-r:last-child{border-bottom:none}
 .wf-r.wf-tot{border-top:2px solid var(--navy);border-bottom:none;padding-top:12px;margin-top:4px}
@@ -149,8 +129,6 @@ select.ic{cursor:pointer;-webkit-appearance:none;appearance:none;background-imag
 .wf-p{font-size:9px;color:var(--w3);flex:0 0 45px;text-align:right}
 .wf-tot .wf-nm{font-family:var(--serif);font-weight:700;color:var(--navy)}
 .wf-tot .wf-v{color:var(--navy);font-size:14px}
-
-/* ═══ SUMMARY TABLE ═══ */
 .stbl{width:100%;border-collapse:collapse}
 .stbl td{padding:8px 0;font-size:13px}
 .stbl .sk{font-weight:600;color:var(--ink);width:180px}
@@ -159,8 +137,6 @@ select.ic{cursor:pointer;-webkit-appearance:none;appearance:none;background-imag
 .stbl .st-total td{border-bottom:2px solid var(--navy);padding:12px 0}
 .stbl .st-total .sv{font-weight:700;color:var(--navy);font-size:18px}
 .stbl .st-pp .sv{font-weight:700;color:var(--gold)}
-
-/* ═══ MODULE CARDS ═══ */
 .mc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .mc{background:var(--off-white);border:1px solid var(--w1);border-radius:3px;overflow:hidden;transition:all .3s;cursor:pointer}
 .mc:hover{box-shadow:var(--sh-m);transform:translateY(-2px)}
@@ -175,49 +151,20 @@ select.ic{cursor:pointer;-webkit-appearance:none;appearance:none;background-imag
 .mc-costs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-top:12px;border-top:1px solid var(--w1)}
 .mc-cl{font-size:7px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--w3);margin-bottom:2px}
 .mc-cv{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--ink)}
-
-/* ═══ FOOTER ═══ */
 .ftr{max-width:1160px;margin:0 auto;padding:16px 40px 40px;display:flex;justify-content:space-between;align-items:center}
 .ftr-l{font-size:9px;color:var(--w3);letter-spacing:.5px}
 .ftr-r{display:flex;gap:3px}
 .ftr-r div{width:5px;height:5px;border-radius:1px}
 .ftr-r div:nth-child(1){background:var(--gold)}.ftr-r div:nth-child(2){background:var(--teal)}.ftr-r div:nth-child(3){background:var(--blue)}.ftr-r div:nth-child(4){background:var(--orange)}
-
-/* ═══ ADMIN MODE ═══ */
 .admin-only{display:none !important}
 body.admin-mode .admin-only{display:block !important}
-.admin-banner{
-  display:none;
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  z-index:999;
-  background:var(--navy);
-  color:var(--white);
-  border-radius:6px;
-  padding:10px 12px;
-  box-shadow:var(--sh-m);
-  font-size:11px;
-  align-items:center;
-  gap:10px
-}
+.admin-banner{display:none;position:fixed;right:20px;bottom:20px;z-index:999;background:var(--navy);color:var(--white);border-radius:6px;padding:10px 12px;box-shadow:var(--sh-m);font-size:11px;align-items:center;gap:10px}
 body.admin-mode .admin-banner{display:flex}
-.admin-btn{
-  background:var(--gold);
-  color:var(--ink);
-  border:none;
-  border-radius:4px;
-  padding:6px 10px;
-  font-size:10px;
-  font-weight:700;
-  cursor:pointer
-}
-
+.admin-btn{background:var(--gold);color:var(--ink);border:none;border-radius:4px;padding:6px 10px;font-size:10px;font-weight:700;cursor:pointer}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes pnlIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes countPulse{0%{transform:scale(1)}40%{transform:scale(1.05)}100%{transform:scale(1)}}
 .cp{animation:countPulse .35s var(--es)}
-
 @media(max-width:900px){
   .mh-in{padding:12px 16px;flex-direction:column;align-items:flex-start;gap:8px}
   .tabs-in{padding:0 16px}.tab{padding:10px 14px;font-size:10px}
@@ -271,15 +218,13 @@ body.admin-mode .admin-banner{display:flex}
   </div>
 </div>
 
-<!-- ════════════════════════════════ -->
 <!-- ═══ SUMMARY TAB ═══ -->
-<!-- ════════════════════════════════ -->
 <div class="section active" id="sec-summary">
 
   <div class="pnl" style="animation-delay:.1s">
     <div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Project Details</div><div class="pnl-s">Global parameters for all modules</div></div>
     <div class="pnl-b">
-      <div class="ig" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr">
+      <div class="ig ig-5">
         <div><div class="il"><div class="id"></div>Client Name</div><input class="ic" id="clientName" placeholder="Enter client name..." oninput="updateAll()"></div>
         <div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="numPeople" value="1500" min="1" step="1" oninput="calcAll()"></div>
         <div><div class="il"><div class="id"></div>Accom. Tent Material</div><select class="ic" id="a_materials" onchange="calcAll()"><option>Insulated (Hard) & Fire Retardant</option><option>Insulated (Sandwich Panel) & Fire Retardant</option></select></div>
@@ -293,29 +238,17 @@ body.admin-mode .admin-banner{display:flex}
     <div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Module Overview</div></div>
     <div class="pnl-b">
       <div class="mc-grid">
-        <div class="mc" onclick="showTab('accom')">
-          <div class="mc-stripe" style="background:linear-gradient(90deg,var(--gold),var(--teal))"></div>
-          <div class="mc-body">
-            <div class="mc-top"><div><div class="mc-title">Accommodation</div><div class="mc-desc">Sleeping tents, MEP, HVAC & furnishing</div></div><div class="mc-badge mc-active">Active</div></div>
-            <div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smAccomCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smAccomPP">&mdash;</div></div></div>
-          </div>
-        </div>
-        <div class="mc" onclick="showTab('dining')">
-          <div class="mc-stripe" style="background:linear-gradient(90deg,var(--orange),var(--blue))"></div>
-          <div class="mc-body">
-            <div class="mc-top"><div><div class="mc-title">Dining Facilities</div><div class="mc-desc">Dining tents, shifts, tables & benches</div></div><div class="mc-badge mc-active">Active</div></div>
-            <div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smDiningCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smDiningPP">&mdash;</div></div></div>
-          </div>
-        </div>
-        <div class="mc" onclick="showTab('medical')" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Medical Facilities</div><div class="mc-desc">Medical tents, beds, pharmacy & equipment</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
-        <div class="mc" onclick="showTab('laundry')" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Laundry</div><div class="mc-desc">Laundry facilities & equipment</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
-        <div class="mc" onclick="showTab('toilets')" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Toilets & Showers</div><div class="mc-desc">Sanitation units & plumbing</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
-        <div class="mc" onclick="showTab('handwash')" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Handwash Stations</div><div class="mc-desc">Hygiene stations & water supply</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
-        <div class="mc" onclick="showTab('gptent')" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">General Purpose Tent</div><div class="mc-desc">Multi-use tent structures</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
-        <div class="mc" onclick="showTab('gym')" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Gym</div><div class="mc-desc">Fitness facilities & equipment</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
-        <div class="mc" onclick="showTab('mwr')" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">MWR</div><div class="mc-desc">Morale, Welfare & Recreation</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
-        <div class="mc" onclick="showTab('office')" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Office</div><div class="mc-desc">Admin & operations workspace</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
-        <div class="mc" onclick="showTab('utilities')" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Utilities (Power / Water)</div><div class="mc-desc">Power generation, water supply & distribution</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
+        <div class="mc" onclick="showTab('accom',document.querySelector('[data-tab=accom]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--gold),var(--teal))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Accommodation</div><div class="mc-desc">Sleeping tents, MEP, HVAC & furnishing</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smAccomCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smAccomPP">&mdash;</div></div></div></div></div>
+        <div class="mc" onclick="showTab('dining',document.querySelector('[data-tab=dining]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--orange),var(--blue))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Dining Facilities</div><div class="mc-desc">Dining tents, shifts, tables & benches</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smDiningCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smDiningPP">&mdash;</div></div></div></div></div>
+        <div class="mc" onclick="showTab('medical',document.querySelector('[data-tab=medical]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Medical Facilities</div><div class="mc-desc">Medical tents, beds, pharmacy & equipment</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
+        <div class="mc" onclick="showTab('laundry',document.querySelector('[data-tab=laundry]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Laundry</div><div class="mc-desc">Laundry facilities & equipment</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
+        <div class="mc" onclick="showTab('toilets',document.querySelector('[data-tab=toilets]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Toilets & Showers</div><div class="mc-desc">Sanitation units & plumbing</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
+        <div class="mc" onclick="showTab('handwash',document.querySelector('[data-tab=handwash]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Handwash Stations</div><div class="mc-desc">Hygiene stations & water supply</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
+        <div class="mc" onclick="showTab('gptent',document.querySelector('[data-tab=gptent]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">General Purpose Tent</div><div class="mc-desc">Multi-use tent structures</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
+        <div class="mc" onclick="showTab('gym',document.querySelector('[data-tab=gym]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Gym</div><div class="mc-desc">Fitness facilities & equipment</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
+        <div class="mc" onclick="showTab('mwr',document.querySelector('[data-tab=mwr]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">MWR</div><div class="mc-desc">Morale, Welfare & Recreation</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
+        <div class="mc" onclick="showTab('office',document.querySelector('[data-tab=office]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Office</div><div class="mc-desc">Admin & operations workspace</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
+        <div class="mc" onclick="showTab('utilities',document.querySelector('[data-tab=utilities]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Utilities (Power / Water)</div><div class="mc-desc">Power generation, water supply & distribution</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
       </div>
     </div>
   </div>
@@ -346,7 +279,7 @@ body.admin-mode .admin-banner{display:flex}
         <tr><td class="sk">Camp Strength</td><td class="sv" id="sPeople">&mdash;</td></tr>
         <tr><td class="sk">Accom. Tent Material</td><td class="sv" id="sMaterial">&mdash;</td></tr>
         <tr><td class="sk">People per Accom. Tent</td><td class="sv" id="sPpt">&mdash;</td></tr>
-        <tr><td class="sk">Duration & Location</td><td class="sv" id="sDuration & Location">&mdash;</td></tr>
+        <tr><td class="sk">Duration & Location</td><td class="sv" id="sLocation">&mdash;</td></tr>
         <tr class="st-total"><td class="sk" style="font-family:var(--serif);color:var(--navy)">Total Estimated Cost</td><td class="sv" id="sTotal">&mdash; AED</td></tr>
         <tr class="st-pp"><td class="sk">Cost per Person</td><td class="sv" id="sPP">&mdash; AED</td></tr>
       </table>
@@ -354,17 +287,15 @@ body.admin-mode .admin-banner{display:flex}
   </div>
 </div>
 
-<!-- ════════════════════════════════ -->
 <!-- ═══ ACCOMMODATION TAB ═══ -->
-<!-- ════════════════════════════════ -->
 <div class="section" id="sec-accom">
   <div class="pnl" style="animation-delay:.1s">
     <div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Accommodation — Inputs</div></div>
     <div class="pnl-b">
       <div class="ig ig-3">
-        <div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="a_people" value="1500" min="1" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
-        <div><div class="il"><div class="id"></div>Accomodation Tent Material</div><select class="ic" id="a_materials" onchange="calcAll()"><option>Insulated (Hard) & Fire Retardant</option><option>Insulated (Sandwich Panel) & Fire Retardant</option></select></div>
-        <div><div class="il"><div class="id"></div>Number of People per Accomodation Tent</div><select class="ic" id="a_ppt" onchange="calcAll()"><option value="25">25</option><option value="50">50</option><option value="100" selected>100</option></select></div>
+        <div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="a_people" value="1500" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
+        <div><div class="il"><div class="id"></div>Accomodation Tent Material</div><input class="ic" id="a_mat_display" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
+        <div><div class="il"><div class="id"></div>People per Accomodation Tent</div><input class="ic" id="a_ppt_display" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
       </div>
     </div>
   </div>
@@ -372,15 +303,8 @@ body.admin-mode .admin-banner{display:flex}
   <div class="pnl" style="animation-delay:.15s">
     <div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div>
     <div class="pnl-b">
-      <div class="cr cr-3">
-        <div class="ct c-navy"><div class="ct-l">Tent Structure</div><div class="ct-v" id="a_tentC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="a_bT" style="background:var(--navy)"></div></div></div>
-        <div class="ct c-blue"><div class="ct-l">MEP Systems</div><div class="ct-v" id="a_mepC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="a_bM" style="background:var(--blue)"></div></div></div>
-        <div class="ct c-teal"><div class="ct-l">HVAC Systems</div><div class="ct-v" id="a_hvacC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="a_bH" style="background:var(--teal)"></div></div></div>
-      </div>
-      <div class="cr cr-2" style="margin-top:12px">
-        <div class="ct c-infra"><div class="ct-l">Infrastructure Subtotal</div><div class="ct-v" id="a_infraT">&mdash;</div></div>
-        <div class="ct c-furn"><div class="ct-l">Furnishing Subtotal</div><div class="ct-v" id="a_furnT">&mdash;</div></div>
-      </div>
+      <div class="cr cr-3"><div class="ct c-navy"><div class="ct-l">Tent Structure</div><div class="ct-v" id="a_tentC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="a_bT" style="background:var(--navy)"></div></div></div><div class="ct c-blue"><div class="ct-l">MEP Systems</div><div class="ct-v" id="a_mepC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="a_bM" style="background:var(--blue)"></div></div></div><div class="ct c-teal"><div class="ct-l">HVAC Systems</div><div class="ct-v" id="a_hvacC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="a_bH" style="background:var(--teal)"></div></div></div></div>
+      <div class="cr cr-2" style="margin-top:12px"><div class="ct c-infra"><div class="ct-l">Infrastructure Subtotal</div><div class="ct-v" id="a_infraT">&mdash;</div></div><div class="ct c-furn"><div class="ct-l">Furnishing Subtotal</div><div class="ct-v" id="a_furnT">&mdash;</div></div></div>
     </div>
   </div>
 
@@ -424,9 +348,7 @@ body.admin-mode .admin-banner{display:flex}
   </div>
 </div>
 
-<!-- ════════════════════════════════ -->
 <!-- ═══ DINING TAB ═══ -->
-<!-- ════════════════════════════════ -->
 <div class="section" id="sec-dining">
   <div class="pnl" style="animation-delay:.1s">
     <div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Dining — Inputs</div></div>
@@ -435,8 +357,8 @@ body.admin-mode .admin-banner{display:flex}
         <div><div class="il"><div class="id"></div>Number of People (Camp Strength)</div><input type="number" class="ic" id="d_people" value="1500" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
       </div>
       <div class="shift-b" style="margin-top:16px">
-        <div class="shift-badge" id="d_shiftBadge">—</div>
-        <div class="shift-info">Capacity: <strong id="d_capDisp">—</strong> per tent · Area: <strong id="d_areaDisp">—</strong> sqm</div>
+        <div class="shift-badge" id="d_shiftBadge">&mdash;</div>
+        <div class="shift-info">Capacity: <strong id="d_capDisp">&mdash;</strong> per tent &middot; Area: <strong id="d_areaDisp">&mdash;</strong> sqm</div>
       </div>
     </div>
   </div>
@@ -444,15 +366,8 @@ body.admin-mode .admin-banner{display:flex}
   <div class="pnl" style="animation-delay:.15s">
     <div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div>
     <div class="pnl-b">
-      <div class="cr cr-3">
-        <div class="ct c-navy"><div class="ct-l">Tent Structure</div><div class="ct-v" id="d_tentC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="d_bT" style="background:var(--navy)"></div></div></div>
-        <div class="ct c-blue"><div class="ct-l">MEP Systems</div><div class="ct-v" id="d_mepC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="d_bM" style="background:var(--blue)"></div></div></div>
-        <div class="ct c-teal"><div class="ct-l">HVAC Systems</div><div class="ct-v" id="d_hvacC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="d_bH" style="background:var(--teal)"></div></div></div>
-      </div>
-      <div class="cr cr-2" style="margin-top:12px">
-        <div class="ct c-infra"><div class="ct-l">Infrastructure Subtotal</div><div class="ct-v" id="d_infraT">&mdash;</div></div>
-        <div class="ct c-furn-o"><div class="ct-l">Furnishing Subtotal</div><div class="ct-v" id="d_furnT">&mdash;</div></div>
-      </div>
+      <div class="cr cr-3"><div class="ct c-navy"><div class="ct-l">Tent Structure</div><div class="ct-v" id="d_tentC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="d_bT" style="background:var(--navy)"></div></div></div><div class="ct c-blue"><div class="ct-l">MEP Systems</div><div class="ct-v" id="d_mepC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="d_bM" style="background:var(--blue)"></div></div></div><div class="ct c-teal"><div class="ct-l">HVAC Systems</div><div class="ct-v" id="d_hvacC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="d_bH" style="background:var(--teal)"></div></div></div></div>
+      <div class="cr cr-2" style="margin-top:12px"><div class="ct c-infra"><div class="ct-l">Infrastructure Subtotal</div><div class="ct-v" id="d_infraT">&mdash;</div></div><div class="ct c-furn-o"><div class="ct-l">Furnishing Subtotal</div><div class="ct-v" id="d_furnT">&mdash;</div></div></div>
     </div>
   </div>
 
@@ -471,7 +386,7 @@ body.admin-mode .admin-banner{display:flex}
     <div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions & Unit Rates</div></div>
     <div class="pnl-b">
       <div class="ag">
-        <div class="at"><label>Dining Tent Area (sqm)</label><div class="av" id="d_tArea">—</div><div class="au">= Capacity × 2</div></div>
+        <div class="at"><label>Dining Tent Area (sqm)</label><div class="av" id="d_tArea">&mdash;</div><div class="au">= Capacity × 2</div></div>
         <div class="at"><label>MEP Load / Person</label><input type="number" id="d_mepL" value="0.02" min="0" step=".001" oninput="calcAll()"><div class="au">kW</div></div>
         <div class="at"><label>HVAC Load / sqm</label><input type="number" id="d_hvacL" value="0.18" min="0" step=".001" oninput="calcAll()"><div class="au">kW</div></div>
         <div class="at"><label>Tent Cost / sqm (USD)</label><input type="number" id="d_tcSqm" value="0" min="0" step=".01" oninput="calcAll()"></div>
@@ -488,240 +403,208 @@ body.admin-mode .admin-banner{display:flex}
 </div>
 
 <!-- Placeholder tabs -->
-<div class="section" id="sec-medical"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">—</div><div class="pnl-t">Medical Facilities</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Medical tents, examination beds, pharmacy storage, observation wards & staffing</div><div style="margin-top:16px;font-size:10px;color:var(--w2)">Upload your Medical sheet to activate this module</div></div></div></div>
-<div class="section" id="sec-laundry"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">—</div><div class="pnl-t">Laundry</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Laundry tents, washing machines, dryers, folding stations & water connections</div><div style="margin-top:16px;font-size:10px;color:var(--w2)">Upload your Laundry sheet to activate this module</div></div></div></div>
-<div class="section" id="sec-toilets"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">—</div><div class="pnl-t">Toilets & Showers</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Ablution blocks, toilet units, shower cubicles, plumbing & waste management</div><div style="margin-top:16px;font-size:10px;color:var(--w2)">Upload your Toilets & Showers sheet to activate this module</div></div></div></div>
-<div class="section" id="sec-handwash"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">—</div><div class="pnl-t">Handwash Stations</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Handwash units, soap dispensers, water supply & hygiene station placement</div><div style="margin-top:16px;font-size:10px;color:var(--w2)">Upload your Handwash Stations sheet to activate this module</div></div></div></div>
-<div class="section" id="sec-gptent"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">—</div><div class="pnl-t">General Purpose Tent</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Multi-use tent structures for briefings, storage, assembly & overflow capacity</div><div style="margin-top:16px;font-size:10px;color:var(--w2)">Upload your General Purpose Tent sheet to activate this module</div></div></div></div>
-<div class="section" id="sec-gym"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">—</div><div class="pnl-t">Gym</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Fitness tent, gym equipment, flooring, ventilation & power requirements</div><div style="margin-top:16px;font-size:10px;color:var(--w2)">Upload your Gym sheet to activate this module</div></div></div></div>
-<div class="section" id="sec-mwr"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">—</div><div class="pnl-t">MWR (Morale, Welfare & Recreation)</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Recreation tent, entertainment systems, seating, internet café & leisure facilities</div><div style="margin-top:16px;font-size:10px;color:var(--w2)">Upload your MWR sheet to activate this module</div></div></div></div>
-<div class="section" id="sec-office"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">—</div><div class="pnl-t">Office</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Admin tents, workstations, IT infrastructure, meeting areas & communications</div><div style="margin-top:16px;font-size:10px;color:var(--w2)">Upload your Office sheet to activate this module</div></div></div></div>
-<div class="section" id="sec-utilities"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">—</div><div class="pnl-t">Utilities (Power / Water)</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Generators, fuel storage, power distribution, water treatment, storage tanks & pumping</div><div style="margin-top:16px;font-size:10px;color:var(--w2)">Upload your Utilities sheet to activate this module</div></div></div></div>
+<div class="section" id="sec-medical"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">&mdash;</div><div class="pnl-t">Medical Facilities</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Medical tents, examination beds, pharmacy storage, observation wards & staffing</div></div></div></div>
+<div class="section" id="sec-laundry"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">&mdash;</div><div class="pnl-t">Laundry</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Laundry tents, washing machines, dryers, folding stations & water connections</div></div></div></div>
+<div class="section" id="sec-toilets"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">&mdash;</div><div class="pnl-t">Toilets & Showers</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Ablution blocks, toilet units, shower cubicles, plumbing & waste management</div></div></div></div>
+<div class="section" id="sec-handwash"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">&mdash;</div><div class="pnl-t">Handwash Stations</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Handwash units, soap dispensers, water supply & hygiene station placement</div></div></div></div>
+<div class="section" id="sec-gptent"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">&mdash;</div><div class="pnl-t">General Purpose Tent</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Multi-use tent structures for briefings, storage, assembly & overflow capacity</div></div></div></div>
+<div class="section" id="sec-gym"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">&mdash;</div><div class="pnl-t">Gym</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Fitness tent, gym equipment, flooring, ventilation & power requirements</div></div></div></div>
+<div class="section" id="sec-mwr"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">&mdash;</div><div class="pnl-t">MWR (Morale, Welfare & Recreation)</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Recreation tent, entertainment systems, seating, internet café & leisure facilities</div></div></div></div>
+<div class="section" id="sec-office"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">&mdash;</div><div class="pnl-t">Office</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Admin tents, workstations, IT infrastructure, meeting areas & communications</div></div></div></div>
+<div class="section" id="sec-utilities"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">&mdash;</div><div class="pnl-t">Utilities (Power / Water)</div><div class="pnl-s">Pending data input</div></div><div class="pnl-b" style="text-align:center;padding:48px;color:var(--w3)"><div style="font-family:var(--serif);font-size:18px;margin-bottom:8px">Ready for Configuration</div><div style="font-size:12px">Generators, fuel storage, power distribution, water treatment, storage tanks & pumping</div></div></div></div>
 
-<div class="ftr"><div class="ftr-l">Draft Designed by Albaddasolutions  . Camp Cost Calculator  · Confidential</div><div class="ftr-r"><div></div><div></div><div></div><div></div></div></div>
+<div class="ftr"><div class="ftr-l">Draft Designed by Albaddasolutions · Camp Cost Calculator · Confidential</div><div class="ftr-r"><div></div><div></div><div></div><div></div></div></div>
 </div>
 
 <script>
 // ═══ ADMIN MODE ═══
 const ADMIN_PASSWORD = "Password@13579";
-
-function enableAdminMode(){
-  document.body.classList.add("admin-mode");
-  localStorage.setItem("campAdminMode","1");
-}
-
-function disableAdminMode(){
-  document.body.classList.remove("admin-mode");
-  localStorage.removeItem("campAdminMode");
-}
-
+function enableAdminMode(){ document.body.classList.add("admin-mode"); localStorage.setItem("campAdminMode","1"); }
+function disableAdminMode(){ document.body.classList.remove("admin-mode"); localStorage.removeItem("campAdminMode"); }
 window.addEventListener("keydown", function(e){
   if(e.ctrlKey && e.shiftKey && e.key.toLowerCase()==="a"){
     e.preventDefault();
-    if(document.body.classList.contains("admin-mode")){
-      disableAdminMode();
-      return;
-    }
+    if(document.body.classList.contains("admin-mode")){ disableAdminMode(); return; }
     const pwd = prompt("Enter admin password");
-    if(pwd === ADMIN_PASSWORD){
-      enableAdminMode();
-    }else if(pwd !== null){
-      alert("Incorrect password");
-    }
+    if(pwd === ADMIN_PASSWORD) enableAdminMode();
+    else if(pwd !== null) alert("Incorrect password");
   }
 });
-
-if(localStorage.getItem("campAdminMode")==="1"){
-  enableAdminMode();
-}
+if(localStorage.getItem("campAdminMode")==="1") enableAdminMode();
 
 // ═══ TAB SWITCHING ═══
 function showTab(id, el){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById('sec-'+id).classList.add('active');
-
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  const activeTab = el || document.querySelector('.tab[data-tab="'+id+'"]');
+  var activeTab = el || document.querySelector('.tab[data-tab="'+id+'"]');
   if(activeTab) activeTab.classList.add('active');
-
-  document.querySelectorAll('#sec-'+id+' .pnl').forEach(p=>{
-    p.style.animation='none';
-    p.offsetHeight;
-    p.style.animation='';
-  });
+  document.querySelectorAll('#sec-'+id+' .pnl').forEach(function(p){ p.style.animation='none'; p.offsetHeight; p.style.animation=''; });
 }
 
 // ═══ SCROLL ═══
-window.addEventListener('scroll',()=>document.getElementById('mh').classList.toggle('scrolled',window.scrollY>10));
+window.addEventListener('scroll',function(){ document.getElementById('mh').classList.toggle('scrolled',window.scrollY>10); });
 
 // ═══ COUNT-UP ═══
-const AS={};
+var AS={};
 function aV(id,nv){
-  const el=document.getElementById(id);if(!el)return;
-  const old=AS[id]||0;AS[id]=nv;
-  if(Math.abs(nv-old)<.01){el.textContent=fC(nv);return}
-  const d=350,st=performance.now();
+  var el=document.getElementById(id); if(!el) return;
+  var old=AS[id]||0; AS[id]=nv;
+  if(Math.abs(nv-old)<.01){ el.textContent=fC(nv); return; }
+  var d=350, st=performance.now();
   (function tk(now){
-    const p=Math.min((now-st)/d,1),e=1-Math.pow(1-p,3),c=old+(nv-old)*e;
+    var p=Math.min((now-st)/d,1), e=1-Math.pow(1-p,3), c=old+(nv-old)*e;
     el.textContent=fC(c);
-    if(p<1)requestAnimationFrame(tk);
-    else{el.textContent=fC(nv);el.classList.remove('cp');void el.offsetWidth;el.classList.add('cp')}
+    if(p<1) requestAnimationFrame(tk);
+    else{ el.textContent=fC(nv); el.classList.remove('cp'); void el.offsetWidth; el.classList.add('cp'); }
   })(performance.now());
 }
 
-// ═══ LINK PEOPLE ═══
-function syncPeople(){
-  const p=document.getElementById('numPeople').value;
-  document.getElementById('a_people').value=p;
-  document.getElementById('d_people').value=p;
+// ═══ SYNC FROM SUMMARY ═══
+function syncInputs(){
+  var p = document.getElementById('numPeople').value;
+  document.getElementById('a_people').value = p;
+  document.getElementById('d_people').value = p;
+  // Sync material & ppt display fields in accommodation tab
+  document.getElementById('a_mat_display').value = document.getElementById('a_materials').value;
+  document.getElementById('a_ppt_display').value = document.getElementById('a_ppt').value + ' people/tent';
 }
 
 // ═══ ACCOMMODATION CALC ═══
 function calcAccom(people){
-  const ppt=+gv('a_ppt');
-  const tcSqm=+gv('a_tcSqm');
-  const mL=+gv('a_mepL');
-  const hL=+gv('a_hvacL');
-  const mcKw=+gv('a_mcKw');
-  const hcKw=+gv('a_hcKw');
+  var ppt = +gv('a_ppt');
+  var tcSqm = +gv('a_tcSqm'), mL = +gv('a_mepL'), hL = +gv('a_hvacL');
+  var mcKw = +gv('a_mcKw'), hcKw = +gv('a_hcKw');
+  var pB = +gv('a_pBunk'), pLk = +gv('a_pLock'), pM = +gv('a_pMat');
+  var pLi = +gv('a_pLin'), pP = +gv('a_pPil'), pBl = +gv('a_pBla');
 
-  const pB=+gv('a_pBunk');
-  const pLk=+gv('a_pLock');
-  const pM=+gv('a_pMat');
-  const pLi=+gv('a_pLin');
-  const pP=+gv('a_pPil');
-  const pBl=+gv('a_pBla');
+  var areaPerTent = ppt * 6;
+  var tents = Math.ceil(people / ppt);
+  var totalTentArea = tents * areaPerTent;
 
-  const areaPerTent = ppt*6;
-  const tents = Math.ceil(people/ppt);
-  const totalTentArea = tents*areaPerTent;
-  const mepKw = people*mL;
-  const hvacKw = totalTentArea*hL;
+  var tentC = totalTentArea * tcSqm;
+  var mepC = people * mL * mcKw;
+  var hvacC = totalTentArea * hL * hcKw;
+  var infra = tentC + mepC + hvacC;
 
-  const tentC = totalTentArea*tcSqm;
-  const mepC = mepKw*mcKw;
-  const hvacC = hvacKw*hcKw;
+  var qH = Math.floor(people / 2);
+  var furn = qH*pB + qH*pLk + people*pM + (people*2)*pLi + people*pP + (people*2)*pBl;
 
-  const infra = tentC+mepC+hvacC;
-  const qH=Math.floor(people/2);
-  const furn=qH*pB+qH*pLk+people*pM+(people*2)*pLi+people*pP+(people*2)*pBl;
+  setText('a_area', fN(areaPerTent));
+  aV('a_tentC', tentC); aV('a_mepC', mepC); aV('a_hvacC', hvacC);
+  aV('a_infraT', infra); aV('a_furnT', furn);
 
-  setText('a_area',fN(areaPerTent));
-  aV('a_tentC',tentC);aV('a_mepC',mepC);aV('a_hvacC',hvacC);
-  aV('a_infraT',infra);aV('a_furnT',furn);
+  var mx = Math.max(tentC, mepC, hvacC, 1);
+  document.getElementById('a_bT').style.width = (tentC/mx*100)+'%';
+  document.getElementById('a_bM').style.width = (mepC/mx*100)+'%';
+  document.getElementById('a_bH').style.width = (hvacC/mx*100)+'%';
 
-  const mx=Math.max(tentC,mepC,hvacC,1);
-  document.getElementById('a_bT').style.width=(tentC/mx*100)+'%';
-  document.getElementById('a_bM').style.width=(mepC/mx*100)+'%';
-  document.getElementById('a_bH').style.width=(hvacC/mx*100)+'%';
+  setText('a_rTent', fN(tents));
+  setText('a_rBunk', fN(qH));
+  setText('a_rLock', fN(qH));
+  setText('a_rMat', fN(people));
+  setText('a_rLin', fN(people*2));
+  setText('a_rPil', fN(people));
+  setText('a_rBla', fN(people*2));
 
-  setText('a_rTent',fN(tents));
-  setText('a_rBunk',fN(qH));
-  setText('a_rLock',fN(qH));
-  setText('a_rMat',fN(people));
-  setText('a_rLin',fN(people*2));
-  setText('a_rPil',fN(people));
-  setText('a_rBla',fN(people*2));
-
-  return infra+furn;
+  return infra + furn;
 }
 
 // ═══ DINING CALC ═══
 function calcDining(people){
-  const cap=people<=500?500:people<=750?750:1500;
-  const shifts=people<=500?'1 Shift':people<=750?'1 Shift':people<=1000?'2 Shifts — 35 min each':people<=1500?'1 Shift':'2 Shifts — 35 min each';
-  const area=cap*2;
-  const tcSqm=+gv('d_tcSqm'),mL=+gv('d_mepL'),hL=+gv('d_hvacL'),mcKw=+gv('d_mcKw'),hcKw=+gv('d_hcKw');
-  const pT=+gv('d_pTab'),pBn=+gv('d_pBen');
+  var cap = people<=500?500 : people<=750?750 : 1500;
+  var shifts = people<=500?'1 Shift' : people<=750?'1 Shift' : people<=1000?'2 Shifts — 35 min each' : people<=1500?'1 Shift' : '2 Shifts — 35 min each';
+  var area = cap * 2;
+  var tcSqm = +gv('d_tcSqm'), mL = +gv('d_mepL'), hL = +gv('d_hvacL');
+  var mcKw = +gv('d_mcKw'), hcKw = +gv('d_hcKw');
+  var pT = +gv('d_pTab'), pBn = +gv('d_pBen');
 
-  setText('d_shiftBadge',shifts);
-  setText('d_capDisp',fN(cap));
-  setText('d_areaDisp',fN(area));
-  setText('d_tArea',fN(area));
+  setText('d_shiftBadge', shifts);
+  setText('d_capDisp', fN(cap));
+  setText('d_areaDisp', fN(area));
+  setText('d_tArea', fN(area));
 
-  const tentQty=Math.min(2,Math.ceil(people/(cap*2)));
-  const G=area*tcSqm;
-  const H=people*mL*mcKw;
-  const I=people*hL*hcKw;
-  const infra=G+H+I;
-  const tables=Math.floor(cap/4), benches=tables*2;
-  const furnT=tables*pT+benches*pBn;
+  var tentQty = Math.min(2, Math.ceil(people/(cap*2)));
+  var G = area * tcSqm;
+  var H = people * mL * mcKw;
+  var I = people * hL * hcKw;
+  var infra = G + H + I;
+  var tables = Math.floor(cap/4), benches = tables*2;
+  var furnT = tables*pT + benches*pBn;
 
-  aV('d_tentC',G);aV('d_mepC',H);aV('d_hvacC',I);
-  aV('d_infraT',infra);aV('d_furnT',furnT);
+  aV('d_tentC', G); aV('d_mepC', H); aV('d_hvacC', I);
+  aV('d_infraT', infra); aV('d_furnT', furnT);
 
-  const mx=Math.max(G,H,I,1);
-  document.getElementById('d_bT').style.width=(G/mx*100)+'%';
-  document.getElementById('d_bM').style.width=(H/mx*100)+'%';
-  document.getElementById('d_bH').style.width=(I/mx*100)+'%';
+  var mx = Math.max(G, H, I, 1);
+  document.getElementById('d_bT').style.width = (G/mx*100)+'%';
+  document.getElementById('d_bM').style.width = (H/mx*100)+'%';
+  document.getElementById('d_bH').style.width = (I/mx*100)+'%';
 
-  setText('d_rTent',fN(tentQty));
-  setText('d_rTab',fN(tables));
-  setText('d_rBen',fN(benches));
+  setText('d_rTent', fN(tentQty));
+  setText('d_rTab', fN(tables));
+  setText('d_rBen', fN(benches));
 
-  return infra+furnT;
+  return infra + furnT;
 }
 
 // ═══ MASTER CALC ═══
 function calcAll(){
-  syncPeople();
-  const people=+(document.getElementById('numPeople').value)||0;
-  const accom=calcAccom(people);
-  const dining=calcDining(people);
-  const grand=accom+dining;
+  syncInputs();
+  var people = +(document.getElementById('numPeople').value) || 0;
+  var accom = calcAccom(people);
+  var dining = calcDining(people);
+  var grand = accom + dining;
 
-  aV('grandTotal',grand);
+  aV('grandTotal', grand);
 
-  document.getElementById('tabAccom').textContent=fS(accom);
-  document.getElementById('tabDining').textContent=fS(dining);
+  document.getElementById('tabAccom').textContent = fS(accom);
+  document.getElementById('tabDining').textContent = fS(dining);
 
-  setText('smAccomCost',fC(accom));
-  setText('smAccomPP',people>0?fC(accom/people):'—');
-  setText('smDiningCost',fC(dining));
-  setText('smDiningPP',people>0?fC(dining/people):'—');
+  setText('smAccomCost', fC(accom));
+  setText('smAccomPP', people>0 ? fC(accom/people) : '—');
+  setText('smDiningCost', fC(dining));
+  setText('smDiningPP', people>0 ? fC(dining/people) : '—');
 
-  const mx=Math.max(accom,dining,1);
-  document.getElementById('wfbA').style.width=(accom/mx*100)+'%';
-  document.getElementById('wfbD').style.width=(dining/mx*100)+'%';
-  setText('wfvA',fC(accom));
-  setText('wfvD',fC(dining));
-  setText('wfvT',fC(grand));
+  var mx = Math.max(accom, dining, 1);
+  document.getElementById('wfbA').style.width = (accom/mx*100)+'%';
+  document.getElementById('wfbD').style.width = (dining/mx*100)+'%';
+  setText('wfvA', fC(accom));
+  setText('wfvD', fC(dining));
+  setText('wfvT', fC(grand));
 
-  if(grand>0){
-    setText('wfpA',(accom/grand*100).toFixed(1)+'%');
-    setText('wfpD',(dining/grand*100).toFixed(1)+'%');
-  }else{
-    setText('wfpA','—');
-    setText('wfpD','—');
+  if(grand > 0){
+    setText('wfpA', (accom/grand*100).toFixed(1)+'%');
+    setText('wfpD', (dining/grand*100).toFixed(1)+'%');
+  } else {
+    setText('wfpA', '—');
+    setText('wfpD', '—');
   }
 
   updateAll();
 }
 
 function updateAll(){
-  const people=+(document.getElementById('numPeople').value)||0;
-  const grand=AS['grandTotal']||0;
-  const client=document.getElementById('clientName').value||'—';
-  const area=document.getElementById('totalArea').value;
-  const dur=document.getElementById('duration').value||'—';
-  const loc=document.getElementById('location').value||'—';
+  var people = +(document.getElementById('numPeople').value) || 0;
+  var grand = AS['grandTotal'] || 0;
+  var client = document.getElementById('clientName').value || '—';
+  var loc = document.getElementById('location').value || '—';
 
-  document.getElementById('mhClient').textContent=client!=='—'?client:'Unified Dashboard';
-  setText('sClient',client);
-  setText('sPeople',fN(people)+' personnel');
-  setText('sArea',area?fN(+area)+' sqm':'—');
-  setText('sDuration',dur);
-  setText('sLocation',loc);
-  setText('sTotal',fC(grand)+' AED');
-  setText('sPP',people>0?fC(grand/people)+' AED':'—');
+  document.getElementById('mhClient').textContent = client !== '—' ? client : 'Unified Dashboard';
+  setText('sClient', client);
+  setText('sPeople', fN(people) + ' personnel');
+  setText('sMaterial', document.getElementById('a_materials').value);
+  setText('sPpt', gv('a_ppt') + ' people/tent');
+  setText('sLocation', loc);
+  setText('sTotal', fC(grand) + ' AED');
+  setText('sPP', people>0 ? fC(grand/people) + ' AED' : '—');
 }
 
 // ═══ HELPERS ═══
-function gv(id){return document.getElementById(id).value||0}
-function setText(id,v){const e=document.getElementById(id);if(e)e.textContent=v}
-function fC(n){return Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
-function fN(n){return Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0})}
-function fS(n){return n>1e6?' '+fN(n/1e6)+'M':n>1e3?' '+fN(n/1e3)+'K':' '+fN(n)}
+function gv(id){ return document.getElementById(id).value || 0; }
+function setText(id, v){ var e = document.getElementById(id); if(e) e.textContent = v; }
+function fC(n){ return Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function fN(n){ return Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0}); }
+function fS(n){ return n>1e6?' '+fN(n/1e6)+'M' : n>1e3?' '+fN(n/1e3)+'K' : ' '+fN(n); }
 
 calcAll();
 </script>
