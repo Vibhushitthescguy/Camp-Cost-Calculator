@@ -279,13 +279,12 @@ body.admin-mode .admin-banner{display:flex}
   <div class="pnl" style="animation-delay:.1s">
     <div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Project Details</div><div class="pnl-s">Global parameters for all modules</div></div>
     <div class="pnl-b">
-      <div class="ig" style="grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr">
+      <div class="ig" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr">
         <div><div class="il"><div class="id"></div>Client Name</div><input class="ic" id="clientName" placeholder="Enter client name..." oninput="updateAll()"></div>
         <div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="numPeople" value="1500" min="1" step="1" oninput="calcAll()"></div>
         <div><div class="il"><div class="id"></div>Accom. Tent Material</div><select class="ic" id="a_materials" onchange="calcAll()"><option>Insulated (Hard) & Fire Retardant</option><option>Insulated (Sandwich Panel) & Fire Retardant</option></select></div>
         <div><div class="il"><div class="id"></div>People per Accom. Tent</div><select class="ic" id="a_ppt" onchange="calcAll()"><option value="25">25</option><option value="50">50</option><option value="100" selected>100</option></select></div>
-        <div><div class="il"><div class="id"></div>Duration</div><input class="ic" id="duration" placeholder="e.g. 6 months" oninput="updateAll()"></div>
-        <div><div class="il"><div class="id"></div>Location</div><input class="ic" id="location" placeholder="e.g. Abu Dhabi" oninput="updateAll()"></div>
+        <div><div class="il"><div class="id"></div>Duration & Location</div><input class="ic" id="location" placeholder="e.g. 6 Months, Abu Dhabi" oninput="updateAll()"></div>
       </div>
     </div>
   </div>
