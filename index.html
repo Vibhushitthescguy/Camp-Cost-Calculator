@@ -38,9 +38,9 @@
   <div class="tab active" data-tab="summary" onclick="showTab('summary',this)">Summary</div>
   <div class="tab" data-tab="accom" onclick="showTab('accom',this)">Accommodation<span class="tab-cost" id="tabAccom"></span></div>
   <div class="tab" data-tab="dining" onclick="showTab('dining',this)">Dining<span class="tab-cost" id="tabDining"></span></div>
-  <div class="tab" data-tab="medical" onclick="showTab('medical',this)" style="color:var(--w2)">Medical</div>
+  <div class="tab" data-tab="toilets" onclick="showTab('toilets',this)" style="color:var(--w2)">Toilet</div>
   <div class="tab" data-tab="laundry" onclick="showTab('laundry',this)" style="color:var(--w2)">Laundry</div>
-  <div class="tab" data-tab="toilets" onclick="showTab('toilets',this)" style="color:var(--w2)">Toilets</div>
+  <div class="tab" data-tab="medical" onclick="showTab('medical',this)" style="color:var(--w2)">Medical</div>
   <div class="tab" data-tab="handwash" onclick="showTab('handwash',this)" style="color:var(--w2)">Handwash</div>
   <div class="tab" data-tab="gptent" onclick="showTab('gptent',this)" style="color:var(--w2)">General Purpose</div>
   <div class="tab" data-tab="gym" onclick="showTab('gym',this)" style="color:var(--w2)">Gym</div>
@@ -62,7 +62,7 @@
   <div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Module Overview</div></div><div class="pnl-b"><div class="mc-grid">
     <div class="mc" onclick="showTab('accom',document.querySelector('[data-tab=accom]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--gold),var(--teal))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Accommodation</div><div class="mc-desc">Sleeping tents, MEP, HVAC & furnishing</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smAccomCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smAccomPP">&mdash;</div></div></div></div></div>
     <div class="mc" onclick="showTab('dining',document.querySelector('[data-tab=dining]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--orange),var(--blue))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Dining Facilities</div><div class="mc-desc">Dining tents, shifts, tables & benches</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smDiningCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smDiningPP">&mdash;</div></div></div></div></div>
-    <div class="mc" onclick="showTab('medical',document.querySelector('[data-tab=medical]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Medical Facilities</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
+    <div class="mc" onclick="showTab('Toilets',document.querySelector('[data-tab=medical]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Medical Facilities</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
     <div class="mc" onclick="showTab('laundry',document.querySelector('[data-tab=laundry]'))" style="opacity:.55"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Laundry</div></div><div class="mc-badge mc-pending">Pending</div></div></div></div>
     <div class="mc" style="opacity:.4;border-style:dashed;cursor:default"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body" style="text-align:center;padding:24px"><div style="font-size:10px;color:var(--w3);text-transform:uppercase;letter-spacing:1px">Toilets · Handwash · GP Tent · Gym · MWR · Office · Utilities</div></div></div>
   </div></div></div>
