@@ -96,13 +96,12 @@
   <!-- Tent info banner -->
   <div class="shift-b" style="margin-top:16px">
     <div class="shift-badge" id="a_tentInfo" style="background:var(--navy)">—</div>
-    <div class="shift-info">Tent area: <strong id="a_areaDisp">—</strong> sqm · Cost/tent: <strong id="a_costPerTent">—</strong> USD · MEP: <strong id="a_mepRate">—</strong>/sqm · HVAC: <strong id="a_hvacRate">—</strong>/sqm</div>
+    <div class="shift-info">Part: <strong id="a_partNum">—</strong> · Tent area: <strong id="a_areaDisp">—</strong> sqm · Cost per tent: <strong id="a_costPerTent">—</strong> USD</div>
   </div>
   </div></div>
 
   <div class="pnl" style="animation-delay:.15s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div><div class="pnl-b">
-    <div class="cr cr-3"><div class="ct c-navy"><div class="ct-l">Tent + Flooring + Doors</div><div class="ct-v" id="a_tentC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="a_bT" style="background:var(--navy)"></div></div></div><div class="ct c-blue"><div class="ct-l">MEP Systems</div><div class="ct-v" id="a_mepC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="a_bM" style="background:var(--blue)"></div></div></div><div class="ct c-teal"><div class="ct-l">HVAC Systems</div><div class="ct-v" id="a_hvacC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="a_bH" style="background:var(--teal)"></div></div></div></div>
-    <div class="cr cr-2" style="margin-top:12px"><div class="ct c-infra"><div class="ct-l">Infrastructure Subtotal</div><div class="ct-v" id="a_infraT">&mdash;</div></div><div class="ct c-furn"><div class="ct-l">Furnishing Subtotal</div><div class="ct-v" id="a_furnT">&mdash;</div></div></div>
+    <div class="cr cr-2"><div class="ct c-infra"><div class="ct-l">Tent Infrastructure Total</div><div class="ct-v" id="a_infraT">&mdash;</div><div style="font-size:9px;color:var(--w3);margin-top:6px" id="a_infraSub"></div></div><div class="ct c-furn"><div class="ct-l">Furnishing Total</div><div class="ct-v" id="a_furnT">&mdash;</div></div></div>
   </div></div>
 
   <div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Infrastructure Requirements</div></div><div class="pnl-b"><div class="rg rg-4">
@@ -179,62 +178,52 @@ function syncInputs(){var p=document.getElementById('numPeople').value;document.
 function calcAccom(people){
   var ppt=+gv('a_ppt');
   var material=document.getElementById('a_materials').value;
+  var isHard=(material.indexOf('Hard')!==-1);
   var tentArea=ppt*6;
   var tents=Math.ceil(people/ppt);
 
-  // B13: Tent cost/sqm based on material
-  var tentCostSqm=(material.indexOf('Hard')!==-1)?245:40;
+  // Tent cost/sqm based on material: Hard=245, Sandwich Panel=40
+  var tentCostSqm=isHard?245:40;
 
   // Fixed rates from admin
   var flooring=+gv('a_flooring');
   var vinyl=+gv('a_vinyl');
   var doors=+gv('a_doors');
 
-  // B16: MEP cost/sqm (IFS by tent area)
-  var mepSqm;
-  if(tentArea<=150) mepSqm=110;
-  else if(tentArea<=300) mepSqm=85;
-  else mepSqm=70;
+  // MEP cost/sqm (IFS by tent area): 150→110, 300→85, 600→70
+  var mepSqm=tentArea<=150?110:tentArea<=300?85:70;
 
-  // B17: HVAC cost/sqm (IFS by tent area)
-  var hvacSqm;
-  if(tentArea<=150) hvacSqm=170;
-  else if(tentArea<=300) hvacSqm=115;
-  else hvacSqm=120;
+  // HVAC cost/sqm (IFS by tent area): 150→170, 300→115, 600→120
+  var hvacSqm=tentArea<=150?170:tentArea<=300?115:120;
 
-  // Cost per tent = (area × tentCost) + (area × mep) + (area × hvac) + doorCost + (area × flooring) + (area × vinyl)
-  var doorCost=(tentArea<=150)?(1*doors):(tents*doors);
+  // Door cost: B18 (Hard+150sqm) uses 1×doors, ALL others (B19-B23) use tents×doors
+  var doorCost=(isHard && tentArea<=150) ? (1*doors) : (tents*doors);
+
+  // Cost per tent = matches B18-B23 formulas exactly
   var costPerTent=(tentArea*tentCostSqm)+(tentArea*mepSqm)+(tentArea*hvacSqm)+doorCost+(tentArea*flooring)+(tentArea*vinyl);
 
-  // Total tent infrastructure
+  // H32 = tents × cost per tent
   var tentTotal=tents*costPerTent;
 
-  // Breakdown for display
-  var tentStructComp=tents*tentArea*(tentCostSqm+flooring+vinyl)+tents*doorCost;
-  var mepComp=tents*tentArea*mepSqm;
-  var hvacComp=tents*tentArea*hvacSqm;
-
-  // Furnishing (updated prices)
+  // Furnishing
   var pB=+gv('a_pBunk'),pLk=+gv('a_pLock'),pM=+gv('a_pMat');
   var pLi=+gv('a_pLin'),pP=+gv('a_pPil'),pBl=+gv('a_pBla');
   var qH=Math.floor(people/2);
   var furn=qH*pB+qH*pLk+people*pM+(people*2)*pLi+people*pP+(people*2)*pBl;
 
+  // Part number: ABS-AHSTNT (Hard) or ABS-ASPSTNT (Sandwich Panel) + area
+  var partPrefix=isHard?'ABS-AHSTNT':'ABS-ASPSTNT';
+  var partNum=partPrefix+'-11582-3-26-'+tentArea;
+
   // UI
   setText('a_area',fN(tentArea));
   setText('a_tentInfo',fN(tents)+' Tents × '+fN(tentArea)+' sqm');
+  setText('a_partNum',partNum);
   setText('a_areaDisp',fN(tentArea));
   setText('a_costPerTent',fC(costPerTent));
-  setText('a_mepRate',fN(mepSqm));
-  setText('a_hvacRate',fN(hvacSqm));
+  setText('a_infraSub',fN(tents)+' tents × $'+fC(costPerTent)+' per tent');
 
-  aV('a_tentC',tentStructComp);aV('a_mepC',mepComp);aV('a_hvacC',hvacComp);
   aV('a_infraT',tentTotal);aV('a_furnT',furn);
-
-  var mx=Math.max(tentStructComp,mepComp,hvacComp,1);
-  document.getElementById('a_bT').style.width=(tentStructComp/mx*100)+'%';
-  document.getElementById('a_bM').style.width=(mepComp/mx*100)+'%';
-  document.getElementById('a_bH').style.width=(hvacComp/mx*100)+'%';
 
   setText('a_rTent',fN(tents));setText('a_rBunk',fN(qH));setText('a_rLock',fN(qH));
   setText('a_rMat',fN(people));setText('a_rLin',fN(people*2));
