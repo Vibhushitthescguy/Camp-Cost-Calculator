@@ -93,7 +93,6 @@
     <div><div class="il"><div class="id"></div>Tent Material</div><input class="ic" id="a_mat_display" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
     <div><div class="il"><div class="id"></div>People per Tent</div><input class="ic" id="a_ppt_display" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
   </div>
-  <!-- Tent info banner -->
   <div class="shift-b" style="margin-top:16px">
     <div class="shift-badge" id="a_tentInfo" style="background:var(--navy)">—</div>
     <div class="shift-info">Part: <strong id="a_partNum">—</strong> · Tent area: <strong id="a_areaDisp">—</strong> sqm · Cost per tent: <strong id="a_costPerTent">—</strong> USD</div>
@@ -115,7 +114,6 @@
     <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M4 21V10l8-7 8 7v11"/><rect x="9" y="14" width="6" height="7"/></svg></div><div class="rc-q">0</div><div class="rc-n">Bunkers</div></div>
   </div></div></div>
 
-  <!-- Admin-only assumptions -->
   <div class="pnl admin-only" style="animation-delay:.25s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions & Unit Rates</div></div><div class="pnl-b">
     <div class="ag">
       <div class="at"><label>Tent Area (sqm)</label><div class="av" id="a_area">300</div><div class="au">= People/Tent × 6</div></div>
@@ -142,7 +140,87 @@
   <div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Dining — Inputs</div></div><div class="pnl-b"><div class="ig ig-1"><div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="d_people" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div></div><div class="shift-b" style="margin-top:16px"><div class="shift-badge" id="d_shiftBadge">&mdash;</div><div class="shift-info">Capacity: <strong id="d_capDisp">&mdash;</strong> per tent · Area: <strong id="d_areaDisp">&mdash;</strong> sqm</div></div></div></div>
   <div class="pnl" style="animation-delay:.15s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div><div class="pnl-b"><div class="cr cr-3"><div class="ct c-navy"><div class="ct-l">Tent Structure</div><div class="ct-v" id="d_tentC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="d_bT" style="background:var(--navy)"></div></div></div><div class="ct c-blue"><div class="ct-l">MEP</div><div class="ct-v" id="d_mepC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="d_bM" style="background:var(--blue)"></div></div></div><div class="ct c-teal"><div class="ct-l">HVAC</div><div class="ct-v" id="d_hvacC">&mdash;</div><div class="ct-bar"><div class="ct-bar-f" id="d_bH" style="background:var(--teal)"></div></div></div></div><div class="cr cr-2" style="margin-top:12px"><div class="ct c-infra"><div class="ct-l">Infrastructure Subtotal</div><div class="ct-v" id="d_infraT">&mdash;</div></div><div class="ct c-furn-o"><div class="ct-l">Furnishing Subtotal</div><div class="ct-v" id="d_furnT">&mdash;</div></div></div></div></div>
   <div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Infrastructure Requirements</div></div><div class="pnl-b"><div class="rg rg-3"><div class="rc pri"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21V11h6v10"/><line x1="3" y1="7" x2="21" y2="7"/></svg></div><div class="rc-q" id="d_rTent">&mdash;</div><div class="rc-n">Dining Tents</div></div><div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="8" rx="1"/><line x1="3" y1="14" x2="21" y2="14"/></svg></div><div class="rc-q" id="d_rTab">&mdash;</div><div class="rc-n">Tables</div></div><div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="4" y="14" width="16" height="4" rx="1"/><line x1="6" y1="18" x2="6" y2="21"/><line x1="18" y1="18" x2="18" y2="21"/></svg></div><div class="rc-q" id="d_rBen">&mdash;</div><div class="rc-n">Benches</div></div></div></div></div>
-  <div class="pnl admin-only" style="animation-delay:.25s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions & Unit Rates</div></div><div class="pnl-b"><div class="ag"><div class="at"><label>Dining Tent Area</label><div class="av" id="d_tArea">&mdash;</div><div class="au">= Capacity × 2</div></div><div class="at"><label>MEP Load / Person</label><input type="number" id="d_mepL" value="0.02" min="0" step=".001" oninput="calcAll()"><div class="au">kW</div></div><div class="at"><label>HVAC Load / sqm</label><input type="number" id="d_hvacL" value="0.18" min="0" step=".001" oninput="calcAll()"><div class="au">kW</div></div><div class="at"><label>Tent Cost / sqm</label><input type="number" id="d_tcSqm" value="0" min="0" step=".01" oninput="calcAll()"></div><div class="at"><label>MEP Cost / kW</label><input type="number" id="d_mcKw" value="24.57" min="0" step=".01" oninput="calcAll()"></div><div class="at"><label>HVAC Cost / kW</label><input type="number" id="d_hcKw" value="77.51" min="0" step=".01" oninput="calcAll()"></div></div><div class="dl"><span>Furnishing (USD)</span></div><div class="fg fg-2"><div class="ft"><label>Table</label><input type="number" id="d_pTab" value="0" min="0" oninput="calcAll()"></div><div class="ft"><label>Bench</label><input type="number" id="d_pBen" value="0" min="0" oninput="calcAll()"></div></div></div></div>
+
+  <div class="pnl admin-only" style="animation-delay:.25s">
+    <div class="pnl-h">
+      <div class="pnl-n">04</div>
+      <div class="pnl-t">Assumptions & Unit Rates</div>
+    </div>
+    <div class="pnl-b">
+      <div class="ag">
+        <div class="at">
+          <label>Dining Tent Area</label>
+          <div class="av" id="d_tArea">&mdash;</div>
+          <div class="au">Auto from capacity</div>
+        </div>
+
+        <div class="at">
+          <label>Shift Count</label>
+          <div class="av" id="d_shiftCount">&mdash;</div>
+          <div class="au">Auto from camp strength</div>
+        </div>
+
+        <div class="at">
+          <label>External Doors Qty</label>
+          <div class="av" id="d_doorQtyDisp">&mdash;</div>
+          <div class="au">Auto from capacity</div>
+        </div>
+
+        <div class="at">
+          <label>MEP Cost / sqm</label>
+          <div class="av" id="d_mepSqmDisp">&mdash;</div>
+          <div class="au">Auto from tent area</div>
+        </div>
+
+        <div class="at">
+          <label>HVAC Cost / sqm</label>
+          <div class="av" id="d_hvacSqmDisp">&mdash;</div>
+          <div class="au">Auto from tent area</div>
+        </div>
+
+        <div class="at">
+          <label>Kitchen & Storage Cost</label>
+          <div class="av" id="d_kitchenAuto">&mdash;</div>
+          <div class="au">=(595000 / people) × 12</div>
+        </div>
+
+        <div class="at">
+          <label>Tent Cost / sqm</label>
+          <input type="number" id="d_tcSqm" value="245" min="0" step=".01" oninput="calcAll()">
+        </div>
+
+        <div class="at">
+          <label>External Door / unit</label>
+          <input type="number" id="d_doorCost" value="950" min="0" step=".01" oninput="calcAll()">
+        </div>
+
+        <div class="at">
+          <label>Flooring / sqm</label>
+          <input type="number" id="d_floorSqm" value="150" min="0" step=".01" oninput="calcAll()">
+        </div>
+
+        <div class="at">
+          <label>Vinyl / sqm</label>
+          <input type="number" id="d_vinylSqm" value="43" min="0" step=".01" oninput="calcAll()">
+        </div>
+
+        <div class="at">
+          <label>Table Cost</label>
+          <input type="number" id="d_pTab" value="600" min="0" step=".01" oninput="calcAll()">
+        </div>
+
+        <div class="at">
+          <label>Bench Cost</label>
+          <input type="number" id="d_pBen" value="250" min="0" step=".01" oninput="calcAll()">
+        </div>
+
+        <div class="at">
+          <label>Mob / Demob</label>
+          <input type="number" id="d_mobDemob" value="470000" min="0" step=".01" oninput="calcAll()">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Placeholders -->
@@ -174,7 +252,7 @@ function aV(id,nv){var el=document.getElementById(id);if(!el)return;var old=AS[i
 
 function syncInputs(){var p=document.getElementById('numPeople').value;document.getElementById('a_people').value=p;document.getElementById('d_people').value=p;document.getElementById('a_mat_display').value=document.getElementById('a_materials').value;document.getElementById('a_ppt_display').value=document.getElementById('a_ppt').value+' people/tent'}
 
-// ═══ ACCOMMODATION CALC (REVISED) ═══
+// ═══ ACCOMMODATION CALC ═══
 function calcAccom(people){
   var ppt=+gv('a_ppt');
   var material=document.getElementById('a_materials').value;
@@ -182,40 +260,26 @@ function calcAccom(people){
   var tentArea=ppt*6;
   var tents=Math.ceil(people/ppt);
 
-  // Tent cost/sqm based on material: Hard=245, Sandwich Panel=40
   var tentCostSqm=isHard?245:40;
-
-  // Fixed rates from admin
   var flooring=+gv('a_flooring');
   var vinyl=+gv('a_vinyl');
   var doors=+gv('a_doors');
 
-  // MEP cost/sqm (IFS by tent area): 150→110, 300→85, 600→70
   var mepSqm=tentArea<=150?110:tentArea<=300?85:70;
-
-  // HVAC cost/sqm (IFS by tent area): 150→170, 300→115, 600→120
   var hvacSqm=tentArea<=150?170:tentArea<=300?115:120;
 
-  // Door cost: B18 (Hard+150sqm) uses 1×doors, ALL others (B19-B23) use tents×doors
-  var doorCost=(isHard && tentArea<=150) ? (1*doors) : (tents*doors);
-
-  // Cost per tent = matches B18-B23 formulas exactly
+  var doorCost=(isHard && tentArea<=150)?(1*doors):(tents*doors);
   var costPerTent=(tentArea*tentCostSqm)+(tentArea*mepSqm)+(tentArea*hvacSqm)+doorCost+(tentArea*flooring)+(tentArea*vinyl);
-
-  // H32 = tents × cost per tent
   var tentTotal=tents*costPerTent;
 
-  // Furnishing
   var pB=+gv('a_pBunk'),pLk=+gv('a_pLock'),pM=+gv('a_pMat');
   var pLi=+gv('a_pLin'),pP=+gv('a_pPil'),pBl=+gv('a_pBla');
   var qH=Math.floor(people/2);
   var furn=qH*pB+qH*pLk+people*pM+(people*2)*pLi+people*pP+(people*2)*pBl;
 
-  // Part number: ABS-AHSTNT (Hard) or ABS-ASPSTNT (Sandwich Panel) + area
   var partPrefix=isHard?'ABS-AHSTNT':'ABS-ASPSTNT';
   var partNum=partPrefix+'-11582-3-26-'+tentArea;
 
-  // UI
   setText('a_area',fN(tentArea));
   setText('a_tentInfo',fN(tents)+' Tents × '+fN(tentArea)+' sqm');
   setText('a_partNum',partNum);
@@ -232,39 +296,119 @@ function calcAccom(people){
   return tentTotal+furn;
 }
 
-// ═══ DINING CALC ═══
+// ═══ DINING CALC (UPDATED AS PER SHEET) ═══
 function calcDining(people){
-  var cap=people<=500?500:people<=750?750:1500;
-  var shifts=people<=500?'1 Shift':people<=750?'1 Shift':people<=1000?'2 Shifts — 35 min each':people<=1500?'1 Shift':'2 Shifts — 35 min each';
-  var area=cap*2;
-  var tcSqm=+gv('d_tcSqm'),mL=+gv('d_mepL'),hL=+gv('d_hvacL'),mcKw=+gv('d_mcKw'),hcKw=+gv('d_hcKw');
-  var pT=+gv('d_pTab'),pBn=+gv('d_pBen');
-  setText('d_shiftBadge',shifts);setText('d_capDisp',fN(cap));setText('d_areaDisp',fN(area));setText('d_tArea',fN(area));
-  var tentQty=Math.min(2,Math.ceil(people/(cap*2)));
-  var G=area*tcSqm,H=people*mL*mcKw,I=people*hL*hcKw;
-  var infra=G+H+I;
-  var tables=Math.floor(cap/4),benches=tables*2;
-  var furnT=tables*pT+benches*pBn;
-  aV('d_tentC',G);aV('d_mepC',H);aV('d_hvacC',I);aV('d_infraT',infra);aV('d_furnT',furnT);
-  var mx=Math.max(G,H,I,1);
-  document.getElementById('d_bT').style.width=(G/mx*100)+'%';document.getElementById('d_bM').style.width=(H/mx*100)+'%';document.getElementById('d_bH').style.width=(I/mx*100)+'%';
-  setText('d_rTent',fN(tentQty));setText('d_rTab',fN(tables));setText('d_rBen',fN(benches));
-  return infra+furnT;
+  var cap = people <= 300 ? 150 : people <= 3000 ? 750 : 1500;
+
+  var shifts =
+    people <= 500 ? '1 Shift' :
+    people <= 750 ? '1 Shift' :
+    people <= 1000 ? '2 shifts - 35 minutes each shift' :
+    people <= 1500 ? '1 Shift' :
+    '2 shifts - 35 minutes each shift';
+
+  var shiftCount;
+  if (people <= 150) shiftCount = 1;
+  else if (people <= 300) shiftCount = 2;
+  else if (people <= 750) shiftCount = 1;
+  else if (people <= 1500) shiftCount = 2;
+  else if (people === 3000) shiftCount = 1;
+  else shiftCount = 2;
+
+  var area = cap === 150 ? 1050 : cap === 750 ? 1500 : 3150;
+  var tentQty = Math.ceil(people / (cap * shiftCount));
+
+  var doorQty = cap === 150 ? 9 : cap === 750 ? 10 : 22;
+  var mepSqm = area === 1050 ? 65 : area === 1500 ? 65 : 60;
+  var hvacSqm = area === 1050 ? 170 : area === 1500 ? 115 : 120;
+
+  var tcSqm = +gv('d_tcSqm');
+  var doorCost = +gv('d_doorCost');
+  var floorSqm = +gv('d_floorSqm');
+  var vinylSqm = +gv('d_vinylSqm');
+  var pT = +gv('d_pTab');
+  var pBn = +gv('d_pBen');
+  var mobDemob = +gv('d_mobDemob');
+
+  var kitchenAnnual = people > 0 ? (595000 / people) * 12 : 0;
+  var kitchenStorageTotal = people * kitchenAnnual;
+
+  var tentStructurePerTent = (area * tcSqm) + (area * floorSqm) + (area * vinylSqm) + (doorQty * doorCost);
+  var mepPerTent = area * mepSqm;
+  var hvacPerTent = area * hvacSqm;
+
+  var tentStructureTotal = tentQty * tentStructurePerTent;
+  var mepTotal = tentQty * mepPerTent;
+  var hvacTotal = tentQty * hvacPerTent;
+
+  var infra = tentStructureTotal + mepTotal + hvacTotal;
+
+  var tables = (cap / 6) * tentQty;
+  var benches = tables * 2;
+  var furnT = (tables * pT) + (benches * pBn);
+
+  var totalDining = infra + furnT;
+
+  setText('d_shiftBadge', shifts);
+  setText('d_capDisp', fN(cap));
+  setText('d_areaDisp', fN(area));
+  setText('d_tArea', fN(area));
+  setText('d_shiftCount', fN(shiftCount));
+  setText('d_doorQtyDisp', fN(doorQty));
+  setText('d_mepSqmDisp', fC(mepSqm));
+  setText('d_hvacSqmDisp', fC(hvacSqm));
+  setText('d_kitchenAuto', fC(kitchenAnnual));
+
+  aV('d_tentC', tentStructureTotal);
+  aV('d_mepC', mepTotal);
+  aV('d_hvacC', hvacTotal);
+  aV('d_infraT', infra);
+  aV('d_furnT', furnT);
+
+  var mx = Math.max(tentStructureTotal, mepTotal, hvacTotal, 1);
+  document.getElementById('d_bT').style.width = (tentStructureTotal / mx * 100) + '%';
+  document.getElementById('d_bM').style.width = (mepTotal / mx * 100) + '%';
+  document.getElementById('d_bH').style.width = (hvacTotal / mx * 100) + '%';
+
+  setText('d_rTent', fN(tentQty));
+  setText('d_rTab', fN(tables));
+  setText('d_rBen', fN(benches));
+
+  return totalDining;
 }
 
 function calcAll(){
   syncInputs();
   var people=+(document.getElementById('numPeople').value)||0;
-  var accom=calcAccom(people);var dining=calcDining(people);var grand=accom+dining;
+  var accom=calcAccom(people);
+  var dining=calcDining(people);
+  var grand=accom+dining;
+
   aV('grandTotal',grand);
-  document.getElementById('tabAccom').textContent=fS(accom);document.getElementById('tabDining').textContent=fS(dining);
-  setText('smAccomCost',fC(accom));setText('smAccomPP',people>0?fC(accom/people):'—');
-  setText('smDiningCost',fC(dining));setText('smDiningPP',people>0?fC(dining/people):'—');
+  document.getElementById('tabAccom').textContent=fS(accom);
+  document.getElementById('tabDining').textContent=fS(dining);
+
+  setText('smAccomCost',fC(accom));
+  setText('smAccomPP',people>0?fC(accom/people):'—');
+  setText('smDiningCost',fC(dining));
+  setText('smDiningPP',people>0?fC(dining/people):'—');
+
   var mx=Math.max(accom,dining,1);
-  document.getElementById('wfbA').style.width=(accom/mx*100)+'%';document.getElementById('wfbD').style.width=(dining/mx*100)+'%';
-  setText('wfvA',fC(accom));setText('wfvD',fC(dining));setText('wfvT',fC(grand));
-  if(grand>0){setText('wfpA',(accom/grand*100).toFixed(1)+'%');setText('wfpD',(dining/grand*100).toFixed(1)+'%')}
-  else{setText('wfpA','—');setText('wfpD','—')}
+  document.getElementById('wfbA').style.width=(accom/mx*100)+'%';
+  document.getElementById('wfbD').style.width=(dining/mx*100)+'%';
+
+  setText('wfvA',fC(accom));
+  setText('wfvD',fC(dining));
+  setText('wfvT',fC(grand));
+
+  if(grand>0){
+    setText('wfpA',(accom/grand*100).toFixed(1)+'%');
+    setText('wfpD',(dining/grand*100).toFixed(1)+'%')
+  }else{
+    setText('wfpA','—');
+    setText('wfpD','—')
+  }
+
   updateAll();
 }
 
@@ -274,10 +418,13 @@ function updateAll(){
   var client=document.getElementById('clientName').value||'—';
   var loc=document.getElementById('location').value||'—';
   document.getElementById('mhClient').textContent=client!=='—'?client:'Unified Dashboard';
-  setText('sClient',client);setText('sPeople',fN(people)+' personnel');
+  setText('sClient',client);
+  setText('sPeople',fN(people)+' personnel');
   setText('sMaterial',document.getElementById('a_materials').value);
-  setText('sPpt',gv('a_ppt')+' people/tent');setText('sLocation',loc);
-  setText('sTotal',fC(grand)+' USD');setText('sPP',people>0?fC(grand/people)+' USD':'—');
+  setText('sPpt',gv('a_ppt')+' people/tent');
+  setText('sLocation',loc);
+  setText('sTotal',fC(grand)+' USD');
+  setText('sPP',people>0?fC(grand/people)+' USD':'—');
 }
 
 function gv(id){return document.getElementById(id).value||0}
