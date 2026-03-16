@@ -119,7 +119,7 @@
     </div>
     <div class="dl"><span>Furnishing Unit Prices (USD)</span></div>
     <div class="fg fg-6">
-      <div class="ft"><label>Bunk Beds</label><input type="number" id="a_pBunk" value="705" min="0" oninput="calcAll()"></div>
+      <div class="ft"><label>Bunk Beds</label><input type="number" id="a_pBunk" value="550" min="0" oninput="calcAll()"></div>
       <div class="ft"><label>Lockers</label><input type="number" id="a_pLock" value="225" min="0" oninput="calcAll()"></div>
       <div class="ft"><label>Mattress</label><input type="number" id="a_pMat" value="100" min="0" oninput="calcAll()"></div>
       <div class="ft"><label>Linen Set</label><input type="number" id="a_pLin" value="18" min="0" oninput="calcAll()"></div>
@@ -180,7 +180,7 @@
     <div class="ig ig-1"><div><div class="il"><div class="id"></div>Number of People (Camp Strength)</div><input type="number" class="ic" id="t_people" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div></div>
     <div class="shift-b" style="margin-top:16px">
       <div class="shift-badge" id="t_info" style="background:var(--teal)">&mdash;</div>
-      <div class="shift-info"><strong id="t_containers">&mdash;</strong> containers · <strong id="t_unitsTotal">&mdash;</strong> toilet/shower units · 1 per 24 people</div>
+      <div class="shift-info"><strong id="t_containers">&mdash;</strong> containers · <strong id="t_unitsTotal">&mdash;</strong> toilet/shower units · <strong id="t_areaTotal">&mdash;</strong> sqm · 1 per 10 people</div>
     </div>
   </div></div>
 
@@ -200,13 +200,11 @@
   <div class="pnl admin-only" style="animation-delay:.25s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions & Unit Rates</div></div><div class="pnl-b">
     <div class="ag">
       <div class="at"><label>Units per Container</label><input type="number" id="t_unitsPerC" value="3" min="1" oninput="calcAll()"></div>
-      <div class="at"><label>Tent Area / Container (sqm)</label><input type="number" id="t_tentArea" value="48" min="0" oninput="calcAll()"><div class="au">sqm</div></div>
-      <div class="at"><label>Cost per Container (USD)</label><input type="number" id="t_containerCost" value="0" min="0" oninput="calcAll()"></div>
-      <div class="at"><label>MEP Load / Container (kW)</label><input type="number" id="t_mepLoad" value="0.02" min="0" step=".001" oninput="calcAll()"></div>
-      <div class="at"><label>HVAC Load / Container (kW)</label><input type="number" id="t_hvacLoad" value="0.18" min="0" step=".001" oninput="calcAll()"></div>
-      <div class="at"><label>MEP Cost / kW (USD)</label><input type="number" id="t_mepCostKw" value="24.57" min="0" step=".01" oninput="calcAll()"></div>
-      <div class="at"><label>HVAC Cost / kW (USD)</label><input type="number" id="t_hvacCostKw" value="77.51" min="0" step=".01" oninput="calcAll()"></div>
-      <div class="at"><label>Bins Cost (USD each)</label><input type="number" id="t_binCost" value="0" min="0" oninput="calcAll()"></div>
+      <div class="at"><label>Area per Container (sqm)</label><div class="av">14.4</div><div class="au">Fixed</div></div>
+      <div class="at"><label>Cost per Container (USD)</label><input type="number" id="t_containerCost" value="25000" min="0" oninput="calcAll()"></div>
+      <div class="at"><label>MEP Cost / sqm (USD)</label><input type="number" id="t_mepSqm" value="40" min="0" step="1" oninput="calcAll()"></div>
+      <div class="at"><label>HVAC Cost / sqm (USD)</label><input type="number" id="t_hvacSqm" value="130" min="0" step="1" oninput="calcAll()"></div>
+      <div class="at"><label>Bins Cost (USD each)</label><input type="number" id="t_binCost" value="10" min="0" oninput="calcAll()"></div>
     </div>
   </div></div>
 </div>
@@ -264,8 +262,8 @@ function calcAccom(people){
   // HVAC cost/sqm (IFS by tent area): 150→170, 300→115, 600→120
   var hvacSqm=tentArea<=150?170:tentArea<=300?115:120;
 
-  // Door cost: B18 (Hard+150sqm) uses 1×doors, ALL others (B19-B23) use tents×doors
-  var doorCost=(isHard && tentArea<=150) ? (1*doors) : (tents*doors);
+  // Door cost: ALL B18-B23 use 1×doors (single door set per tent)
+  var doorCost=1*doors;
 
   // Cost per tent = matches B18-B23 formulas exactly
   var costPerTent=(tentArea*tentCostSqm)+(tentArea*mepSqm)+(tentArea*hvacSqm)+doorCost+(tentArea*flooring)+(tentArea*vinyl);
@@ -392,41 +390,44 @@ function calcDining(people){
   return total;
 }
 
-// ═══ TOILETS & SHOWERS CALC ═══
+// ═══ TOILETS & SHOWERS CALC (REVISED) ═══
 function calcToilets(people){
   var unitsPerC=+gv('t_unitsPerC');
-  var containers=Math.ceil(people/24);
-  var containerCost=+gv('t_containerCost');
-  var mepLoad=+gv('t_mepLoad');
-  var hvacLoad=+gv('t_hvacLoad');
-  var mepCostKw=+gv('t_mepCostKw');
-  var hvacCostKw=+gv('t_hvacCostKw');
-  var binCost=+gv('t_binCost');
+  // B7: CEILING(people/10) — 1 container per 10 people
+  var containers=Math.ceil(people/10);
+  // B8: Total tent area = containers × 14.4 sqm
+  var areaPerContainer=14.4;
+  var totalArea=containers*areaPerContainer;
+  // Costs from admin
+  var containerCost=+gv('t_containerCost');  // B12: 25000
+  var mepSqm=+gv('t_mepSqm');              // B13: 40/sqm
+  var hvacSqm=+gv('t_hvacSqm');            // B14: 130/sqm
+  var binCostEach=+gv('t_binCost');         // B16: 10
 
-  // G18: Building cost per container = units × containerCost
-  var g18=unitsPerC*containerCost;
-  // H18: MEP per container = units × mepLoad × mepCost/kW
-  var h18=unitsPerC*mepLoad*mepCostKw;
-  // I18: HVAC per container = units × hvacLoad × hvacCost/kW
-  var i18=unitsPerC*hvacLoad*hvacCostKw;
-  // J18: Total per container
-  var j18=g18+h18+i18;
+  // B15: Cost per container = (25000*1)+(14.4*mep)+(14.4*hvac)
+  var costPerContainer=containerCost+(areaPerContainer*mepSqm)+(areaPerContainer*hvacSqm);
 
-  // F19: Bins qty = 6 × unitsPerContainer
-  var binsQty=6*unitsPerC;
-  // G19/J19: Bins total = qty × binCost
-  var j19=binsQty*binCost;
+  // G19: Total building = (containers×containerCost)+(mepSqm×totalArea)+(hvacSqm×totalArea)
+  var g19=(containers*containerCost)+(mepSqm*totalArea)+(hvacSqm*totalArea);
+  // H19 = G19
+  var h19=g19;
 
-  // D3 = SUM(J18:J19)
-  var total=j18+j19;
+  // F20: Bins qty = 6 × containers
+  var binsQty=6*containers;
+  // G20/H20: Bins cost = containers × binCostEach
+  var h20=containers*binCostEach;
+
+  // D3 = SUM(H19:H20)
+  var total=h19+h20;
 
   // UI
   setText('t_info',fN(containers)+' Containers');
   setText('t_containers',fN(containers));
   setText('t_unitsTotal',fN(containers*unitsPerC));
-  setText('t_infraSub',fN(containers)+' containers × $'+fC(j18)+' each');
-  aV('t_infraT',j18);
-  aV('t_binsCost',j19);
+  setText('t_areaTotal',fN(Math.round(totalArea)));
+  setText('t_infraSub',fN(containers)+' containers · $'+fC(costPerContainer)+' each · '+fN(Math.round(totalArea))+' sqm total');
+  aV('t_infraT',h19);
+  aV('t_binsCost',h20);
   setText('t_rContainers',fN(containers));
   setText('t_rUnits',fN(containers*unitsPerC));
   setText('t_rBins',fN(binsQty));
