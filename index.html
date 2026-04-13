@@ -8,260 +8,188 @@
 <style>
 @font-face{font-family:'Bookman';src:local('Bookman Old Style'),local('URW Bookman'),local('Bookman');font-weight:normal}
 @font-face{font-family:'Bookman';src:local('Bookman Old Style Bold'),local('URW Bookman Bold');font-weight:bold}
-:root{--white:#fff;--off-white:#f8f7f4;--cream:#f2f0eb;--w1:#e8e5df;--w2:#d1cdc5;--w3:#a8a198;--w4:#7a746b;--charcoal:#3d3830;--ink:#1a1714;--navy:#051c2c;--blue:#2b6cb0;--teal:#1a7a6d;--gold:#b8860b;--gold-l:rgba(184,134,11,0.07);--gold-g:rgba(184,134,11,0.15);--orange:#c05621;--orange-l:rgba(192,86,33,0.07);--serif:'Bookman','Libre Baskerville','Georgia',serif;--sans:'IBM Plex Sans',-apple-system,sans-serif;--sh-s:0 1px 3px rgba(26,23,20,0.05);--sh-m:0 4px 16px rgba(26,23,20,0.07);--eo:cubic-bezier(0.16,1,0.3,1);--es:cubic-bezier(0.34,1.56,0.64,1)}
+:root{--white:#fff;--off-white:#f8f7f4;--cream:#f2f0eb;--w1:#e8e5df;--w2:#d1cdc5;--w3:#a8a198;--w4:#7a746b;--charcoal:#3d3830;--ink:#1a1714;--navy:#051c2c;--blue:#2b6cb0;--teal:#1a7a6d;--gold:#b8860b;--gold-l:rgba(184,134,11,0.07);--orange:#c05621;--serif:'Bookman','Libre Baskerville','Georgia',serif;--sans:'IBM Plex Sans',-apple-system,sans-serif;--sh-s:0 1px 3px rgba(26,23,20,0.05);--sh-m:0 4px 16px rgba(26,23,20,0.07);--eo:cubic-bezier(0.16,1,0.3,1);--es:cubic-bezier(0.34,1.56,0.64,1)}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--cream);color:var(--ink);font-family:var(--sans);min-height:100vh;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.55' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");pointer-events:none;z-index:0}.page{position:relative;z-index:1}
 .mh{background:var(--navy);color:var(--white);position:sticky;top:0;z-index:200;transition:box-shadow .3s}.mh.scrolled{box-shadow:0 4px 24px rgba(5,28,44,.25)}.mh::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold) 25%,var(--teal) 25% 50%,var(--blue) 50% 75%,var(--orange) 75%)}.mh-in{max-width:1160px;margin:0 auto;padding:14px 40px;display:flex;justify-content:space-between;align-items:center}.mh-left{display:flex;align-items:center;gap:16px}.mh-logo{width:32px;height:32px;background:var(--gold);border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0}.mh-logo svg{width:18px;height:18px}.mh-ey{font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1px}.mh-t{font-family:var(--serif);font-size:16px;font-weight:700}.mh-right{text-align:right}.mh-cl{font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1px}.mh-cv{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--gold)}.mh-cu{font-size:10px;color:rgba(255,255,255,.35);margin-left:3px}
-.tabs{background:var(--white);border-bottom:1px solid var(--w1);position:sticky;top:56px;z-index:190;box-shadow:var(--sh-s)}.tabs-in{max-width:1160px;margin:0 auto;padding:0 40px;display:flex;gap:0;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}.tabs-in::-webkit-scrollbar{display:none}.tab{padding:12px 20px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--w3);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;user-select:none}.tab:hover{color:var(--w4)}.tab.active{color:var(--navy);border-bottom-color:var(--navy)}.tab .tab-cost{font-family:var(--serif);font-size:10px;font-weight:700;color:var(--gold);margin-left:6px}
+.tabs{background:var(--white);border-bottom:1px solid var(--w1);position:sticky;top:56px;z-index:190;box-shadow:var(--sh-s)}.tabs-in{max-width:1160px;margin:0 auto;padding:0 40px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}.tabs-in::-webkit-scrollbar{display:none}.tab{padding:12px 20px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--w3);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;user-select:none}.tab:hover{color:var(--w4)}.tab.active{color:var(--navy);border-bottom-color:var(--navy)}.tab .tab-cost{font-family:var(--serif);font-size:10px;font-weight:700;color:var(--gold);margin-left:6px}
 .section{display:none;max-width:1160px;margin:0 auto;padding:28px 40px 60px}.section.active{display:block}
 .pnl{background:var(--white);border:1px solid var(--w1);border-radius:3px;margin-bottom:20px;box-shadow:var(--sh-s);overflow:hidden;opacity:0;transform:translateY(16px);animation:pnlIn .45s var(--eo) forwards}.pnl-h{padding:18px 24px 14px;border-bottom:1px solid var(--w1);display:flex;align-items:center;gap:12px}.pnl-n{font-family:var(--serif);font-size:10px;font-weight:700;color:var(--white);background:var(--navy);width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0}.pnl-t{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--navy)}.pnl-s{font-size:10px;color:var(--w3);margin-left:auto;font-style:italic}.pnl-b{padding:22px 24px 24px}
-.ig{display:grid;gap:16px}.ig-5{grid-template-columns:2fr 1fr 1fr 1fr 1fr}.ig-3{grid-template-columns:1fr 1fr 1fr}.ig-1{grid-template-columns:1fr;max-width:400px}.il{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--w4);margin-bottom:5px;display:flex;align-items:center;gap:5px}.il .id{width:4px;height:4px;background:var(--gold);border-radius:1px}.ic{width:100%;background:var(--off-white);border:1px solid var(--w2);border-left:3px solid var(--gold);border-radius:2px;padding:11px 12px;font-family:var(--serif);font-size:14px;color:var(--ink);outline:none;transition:all .25s}.ic:focus{border-color:var(--navy);border-left-color:var(--navy);background:var(--white);box-shadow:0 0 0 3px rgba(5,28,44,.06)}.ic::placeholder{color:var(--w3);font-family:var(--sans);font-size:12px;font-style:italic}select.ic{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a746b' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
-.shift-b{display:flex;align-items:center;gap:14px;background:var(--off-white);border:1px solid var(--w1);border-radius:2px;padding:12px 18px;margin-top:16px}.shift-badge{font-family:var(--serif);font-size:11px;font-weight:700;color:var(--white);background:var(--orange);padding:4px 10px;border-radius:2px;white-space:nowrap}.shift-info{font-size:11px;color:var(--w4)}.shift-info strong{font-family:var(--serif);color:var(--ink)}
-.cr{display:grid;gap:12px}.cr-3{grid-template-columns:1fr 1fr 1fr}.cr-2{grid-template-columns:1fr 1fr}.ct{background:var(--off-white);border:1px solid var(--w1);border-radius:2px;padding:18px;position:relative;overflow:hidden;transition:all .3s;cursor:default}.ct:hover{box-shadow:var(--sh-m);transform:translateY(-2px)}.ct::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}.ct.c-navy::before{background:var(--navy)}.ct.c-blue::before{background:var(--blue)}.ct.c-teal::before{background:var(--teal)}.ct.c-infra::before{background:linear-gradient(90deg,var(--navy),var(--blue),var(--teal));height:3px}.ct.c-furn::before{background:var(--gold);height:3px}.ct.c-furn-o::before{background:var(--orange);height:3px}.ct-l{font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--w3);margin-bottom:8px}.ct-v{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--ink)}.ct.c-infra .ct-v{color:var(--navy);font-size:20px}.ct.c-furn .ct-v{color:var(--gold);font-size:20px}.ct.c-furn-o .ct-v{color:var(--orange);font-size:20px}.ct-bar{height:3px;background:var(--w1);border-radius:2px;margin-top:10px;overflow:hidden}.ct-bar-f{height:100%;border-radius:2px;transition:width .6s var(--eo);width:0}
+.ig{display:grid;gap:16px}.ig-3{grid-template-columns:1fr 1fr 1fr}.ig-1{grid-template-columns:1fr;max-width:400px}.il{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--w4);margin-bottom:5px;display:flex;align-items:center;gap:5px}.il .id{width:4px;height:4px;background:var(--gold);border-radius:1px}.ic{width:100%;background:var(--off-white);border:1px solid var(--w2);border-left:3px solid var(--gold);border-radius:2px;padding:11px 12px;font-family:var(--serif);font-size:14px;color:var(--ink);outline:none;transition:all .25s}.ic:focus{border-color:var(--navy);border-left-color:var(--navy);background:var(--white);box-shadow:0 0 0 3px rgba(5,28,44,.06)}.ic::placeholder{color:var(--w3);font-family:var(--sans);font-size:12px;font-style:italic}select.ic{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a746b' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+.shift-b{display:flex;align-items:center;gap:14px;background:var(--off-white);border:1px solid var(--w1);border-radius:2px;padding:12px 18px;margin-top:16px}.shift-badge{font-family:var(--serif);font-size:11px;font-weight:700;color:var(--white);padding:4px 10px;border-radius:2px;white-space:nowrap}.shift-info{font-size:11px;color:var(--w4)}.shift-info strong{font-family:var(--serif);color:var(--ink)}
+.cr{display:grid;gap:12px}.cr-3{grid-template-columns:1fr 1fr 1fr}.cr-2{grid-template-columns:1fr 1fr}.ct{background:var(--off-white);border:1px solid var(--w1);border-radius:2px;padding:18px;position:relative;overflow:hidden;transition:all .3s;cursor:default}.ct:hover{box-shadow:var(--sh-m);transform:translateY(-2px)}.ct::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}.ct.c-infra::before{background:linear-gradient(90deg,var(--navy),var(--blue),var(--teal))}.ct.c-furn::before{background:var(--gold)}.ct.c-furn-o::before{background:var(--orange)}.ct.c-navy::before{background:var(--navy)}.ct-l{font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--w3);margin-bottom:8px}.ct-v{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--ink)}.ct.c-infra .ct-v{color:var(--navy);font-size:20px}.ct.c-furn .ct-v{color:var(--gold);font-size:20px}.ct.c-furn-o .ct-v{color:var(--orange);font-size:20px}
 .rg{display:grid;gap:0;border:1px solid var(--w1);border-radius:2px;overflow:hidden}.rg-4{grid-template-columns:repeat(4,1fr)}.rg-3{grid-template-columns:repeat(3,1fr)}.rc{padding:20px 14px;text-align:center;border-right:1px solid var(--w1);border-bottom:1px solid var(--w1);background:var(--white);position:relative;transition:all .25s}.rc:hover{background:var(--off-white)}.rg-4 .rc:nth-child(4n){border-right:none}.rg-4 .rc:nth-child(n+5){border-bottom:none}.rg-3 .rc:nth-child(3n){border-right:none}.rg-3 .rc:nth-child(n+4){border-bottom:none}.rc.pri{background:linear-gradient(180deg,rgba(5,28,44,.03),var(--white))}.rc.pri .rc-q{color:var(--navy)}.rc.pri::after{content:'PRIMARY';position:absolute;top:5px;right:6px;font-size:6px;font-weight:700;letter-spacing:1.5px;color:var(--gold);background:var(--gold-l);padding:2px 4px;border-radius:1px}.rc-i{width:28px;height:28px;margin:0 auto 6px;background:var(--off-white);border-radius:50%;display:flex;align-items:center;justify-content:center}.rc-i svg{width:14px;height:14px;stroke:var(--navy);stroke-width:1.8;fill:none}.rc-q{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--charcoal);line-height:1;margin-bottom:4px}.rc-n{font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--w4)}.rc-s{font-size:7px;color:var(--w3);margin-top:2px;font-style:italic}
 .ag{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.at{background:var(--off-white);border:1px solid var(--w1);border-radius:2px;padding:12px 14px}.at label{font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--w3);display:block;margin-bottom:4px}.at .av{font-family:var(--serif);font-size:14px;color:var(--ink)}.at .au{font-size:8px;color:var(--w3);margin-top:2px}.at input{width:100%;background:var(--white);border:1px solid var(--w2);border-radius:1px;padding:7px 9px;font-family:var(--serif);font-size:13px;color:var(--ink);outline:none;transition:all .2s}.at input:focus{border-color:var(--navy);box-shadow:0 0 0 2px rgba(5,28,44,.05)}.dl{display:flex;align-items:center;gap:10px;margin:16px 0 12px}.dl span{font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--w3);white-space:nowrap}.dl::after{content:'';flex:1;height:1px;background:var(--w1)}.fg{display:grid;gap:10px}.fg-6{grid-template-columns:repeat(6,1fr)}.fg-2{grid-template-columns:repeat(2,1fr)}.ft{background:var(--white);border:1px solid var(--w1);border-radius:2px;padding:10px 12px}.ft label{font-size:7px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--w3);display:block;margin-bottom:3px}.ft input{width:100%;background:var(--off-white);border:1px solid var(--w2);border-radius:1px;padding:5px 7px;font-family:var(--serif);font-size:12px;color:var(--ink);outline:none;transition:all .2s}.ft input:focus{border-color:var(--teal);box-shadow:0 0 0 2px rgba(26,122,109,.06)}
 .wf-r{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--w1)}.wf-r:last-child{border-bottom:none}.wf-r.wf-tot{border-top:2px solid var(--navy);border-bottom:none;padding-top:12px;margin-top:4px}.wf-d{width:8px;height:8px;border-radius:2px;flex-shrink:0}.wf-nm{font-size:11px;color:var(--w4);flex:0 0 130px}.wf-bw{flex:1;height:7px;background:var(--w1);border-radius:2px;overflow:hidden}.wf-bf{height:100%;border-radius:2px;transition:width .6s var(--eo)}.wf-v{font-family:var(--serif);font-size:12px;font-weight:700;color:var(--ink);flex:0 0 120px;text-align:right}.wf-p{font-size:9px;color:var(--w3);flex:0 0 45px;text-align:right}.wf-tot .wf-nm{font-family:var(--serif);font-weight:700;color:var(--navy)}.wf-tot .wf-v{color:var(--navy);font-size:14px}
 .stbl{width:100%;border-collapse:collapse}.stbl td{padding:8px 0;font-size:13px}.stbl .sk{font-weight:600;color:var(--ink);width:180px}.stbl .sv{font-family:var(--serif);color:var(--w4)}.stbl tr{border-bottom:1px solid var(--w1)}.stbl .st-total td{border-bottom:2px solid var(--navy);padding:12px 0}.stbl .st-total .sv{font-weight:700;color:var(--navy);font-size:18px}.stbl .st-pp .sv{font-weight:700;color:var(--gold)}
 .mc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.mc{background:var(--off-white);border:1px solid var(--w1);border-radius:3px;overflow:hidden;transition:all .3s;cursor:pointer}.mc:hover{box-shadow:var(--sh-m);transform:translateY(-2px)}.mc-stripe{height:4px}.mc-body{padding:18px 20px}.mc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}.mc-title{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy)}.mc-desc{font-size:10px;color:var(--w4);margin-top:2px}.mc-badge{font-size:7px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 7px;border-radius:2px}.mc-active{background:rgba(26,122,109,.08);color:var(--teal)}.mc-pending{background:rgba(168,161,152,.12);color:var(--w3)}.mc-costs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-top:12px;border-top:1px solid var(--w1)}.mc-cl{font-size:7px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--w3);margin-bottom:2px}.mc-cv{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--ink)}
-.ftr{max-width:1160px;margin:0 auto;padding:16px 40px 40px;display:flex;justify-content:space-between;align-items:center}.ftr-l{font-size:9px;color:var(--w3);letter-spacing:.5px}.ftr-r{display:flex;gap:3px}.ftr-r div{width:5px;height:5px;border-radius:1px}.ftr-r div:nth-child(1){background:var(--gold)}.ftr-r div:nth-child(2){background:var(--teal)}.ftr-r div:nth-child(3){background:var(--blue)}.ftr-r div:nth-child(4){background:var(--orange)}
+.note-box{margin-top:14px;padding:10px 14px;background:var(--off-white);border:1px solid var(--w1);border-radius:2px;font-size:9px;color:var(--w4);line-height:1.6}
+.prop-ftr{max-width:1160px;margin:0 auto;padding:16px 40px 40px}.prop-ftr .pt{font-size:8px;color:var(--w3);line-height:1.6;max-width:800px}.prop-ftr .pt strong{color:var(--w4)}.prop-ftr .dots{display:flex;gap:3px;margin-top:8px}.prop-ftr .dots div{width:5px;height:5px;border-radius:1px}.prop-ftr .dots div:nth-child(1){background:var(--gold)}.prop-ftr .dots div:nth-child(2){background:var(--teal)}.prop-ftr .dots div:nth-child(3){background:var(--blue)}.prop-ftr .dots div:nth-child(4){background:var(--orange)}
 .admin-only{display:none !important}body.admin-mode .admin-only{display:block !important}.admin-banner{display:none;position:fixed;right:20px;bottom:20px;z-index:999;background:var(--navy);color:var(--white);border-radius:6px;padding:10px 12px;box-shadow:var(--sh-m);font-size:11px;align-items:center;gap:10px}body.admin-mode .admin-banner{display:flex}.admin-btn{background:var(--gold);color:var(--ink);border:none;border-radius:4px;padding:6px 10px;font-size:10px;font-weight:700;cursor:pointer}
 @keyframes pnlIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}@keyframes countPulse{0%{transform:scale(1)}40%{transform:scale(1.05)}100%{transform:scale(1)}}.cp{animation:countPulse .35s var(--es)}
-@media(max-width:900px){.mh-in{padding:12px 16px;flex-direction:column;align-items:flex-start;gap:8px}.tabs-in{padding:0 16px}.tab{padding:10px 14px;font-size:10px}.section{padding:20px 16px 48px}.ig-5,.ig-3,.ag,.cr-3{grid-template-columns:1fr}.cr-2{grid-template-columns:1fr}.rg-4,.rg-3{grid-template-columns:1fr 1fr}.fg-6{grid-template-columns:1fr 1fr 1fr}.mc-grid{grid-template-columns:1fr}.wf-nm{flex:0 0 90px;font-size:10px}.wf-v{flex:0 0 80px;font-size:11px}}
+@media(max-width:900px){.mh-in{padding:12px 16px;flex-direction:column;align-items:flex-start;gap:8px}.tabs-in{padding:0 16px}.tab{padding:10px 14px;font-size:10px}.section{padding:20px 16px 48px}.ig-3,.ag,.cr-3{grid-template-columns:1fr}.cr-2{grid-template-columns:1fr}.rg-4,.rg-3{grid-template-columns:1fr 1fr}.fg-6{grid-template-columns:1fr 1fr 1fr}.mc-grid{grid-template-columns:1fr}.wf-nm{flex:0 0 90px;font-size:10px}.wf-v{flex:0 0 80px;font-size:11px}}
 </style>
 </head>
 <body>
 <div class="page">
 <div class="admin-banner"><span>Admin mode active</span><button class="admin-btn" onclick="disableAdminMode()">Hide rates</button></div>
-
-<div class="mh" id="mh"><div class="mh-in"><div class="mh-left"><div class="mh-logo"><svg viewBox="0 0 20 20" fill="none" stroke="#051c2c" stroke-width="1.8"><path d="M3 17V7l7-4 7 4v10"/><path d="M7 17v-6h6v6"/><line x1="3" y1="7" x2="17" y2="7"/></svg></div><div><div class="mh-ey">Camp Cost Calculator</div><div class="mh-t" id="mhClient">Unified Dashboard</div></div></div><div class="mh-right"><div class="mh-cl">Grand Total</div><div><span class="mh-cv" id="grandTotal">&mdash;</span><span class="mh-cu">USD</span></div></div></div></div>
-
+<div class="mh" id="mh"><div class="mh-in"><div class="mh-left"><div class="mh-logo"><svg viewBox="0 0 20 20" fill="none" stroke="#051c2c" stroke-width="1.8"><path d="M3 17V7l7-4 7 4v10"/><path d="M7 17v-6h6v6"/><line x1="3" y1="7" x2="17" y2="7"/></svg></div><div><div class="mh-ey">Camp Cost Calculator</div><div class="mh-t">Albaddad Solutions</div></div></div><div class="mh-right"><div class="mh-cl">Grand Total</div><div><span class="mh-cv" id="grandTotal">&mdash;</span><span class="mh-cu">USD</span></div></div></div></div>
 <div class="tabs"><div class="tabs-in">
-  <div class="tab active" data-tab="summary" onclick="showTab('summary',this)">Summary</div>
-  <div class="tab" data-tab="accom" onclick="showTab('accom',this)">Accommodation<span class="tab-cost" id="tabAccom"></span></div>
-  <div class="tab" data-tab="dining" onclick="showTab('dining',this)">Dining<span class="tab-cost" id="tabDining"></span></div>
-  <div class="tab" data-tab="toilets" onclick="showTab('toilets',this)">Toilets & Showers<span class="tab-cost" id="tabToilets"></span></div>
-  <div class="tab" data-tab="handwash" onclick="showTab('handwash',this)">Handwash<span class="tab-cost" id="tabHandwash"></span></div>
-  <div class="tab" data-tab="others" onclick="showTab('others',this)" style="color:var(--w2)">Others</div>
+<div class="tab active" data-tab="summary" onclick="showTab('summary',this)">Summary</div>
+<div class="tab" data-tab="accom" onclick="showTab('accom',this)">Accommodation<span class="tab-cost" id="tabAccom"></span></div>
+<div class="tab" data-tab="dining" onclick="showTab('dining',this)">Dining<span class="tab-cost" id="tabDining"></span></div>
+<div class="tab" data-tab="toilets" onclick="showTab('toilets',this)">Toilets & Showers<span class="tab-cost" id="tabToilets"></span></div>
+<div class="tab" data-tab="handwash" onclick="showTab('handwash',this)">Handwash<span class="tab-cost" id="tabHandwash"></span></div>
+<div class="tab" data-tab="others" onclick="showTab('others',this)" style="color:var(--w2)">Others</div>
 </div></div>
-
-<!-- ═══ SUMMARY ═══ -->
+<!-- SUMMARY -->
 <div class="section active" id="sec-summary">
-  <div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Project Details</div><div class="pnl-s">Global parameters for all modules</div></div><div class="pnl-b"><div class="ig ig-5">
-    <div><div class="il"><div class="id"></div>Client Name</div><input class="ic" id="clientName" placeholder="Enter client name..." oninput="updateAll()"></div>
-    <div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="numPeople" value="750" min="1" step="1" oninput="calcAll()"></div>
-    <div><div class="il"><div class="id"></div>Accom. Tent Material</div><select class="ic" id="a_materials" onchange="calcAll()"><option>Insulated (Hard) & Fire Retardant</option><option>Insulated (Sandwich Panel) & Fire Retardant</option></select></div>
-    <div><div class="il"><div class="id"></div>People per Accom. Tent</div><select class="ic" id="a_ppt" onchange="calcAll()"><option value="25">25</option><option value="50" selected>50</option><option value="100">100</option></select></div>
-    <div><div class="il"><div class="id"></div>Duration & Location</div><input class="ic" id="location" placeholder="e.g. 6 Months, Abu Dhabi" oninput="updateAll()"></div>
-  </div></div></div>
-
-  <div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Module Overview</div></div><div class="pnl-b"><div class="mc-grid">
-    <div class="mc" onclick="showTab('accom',document.querySelector('[data-tab=accom]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--gold),var(--teal))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Accommodation</div><div class="mc-desc">Sleeping tents, MEP, HVAC & furnishing</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smAccomCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smAccomPP">&mdash;</div></div></div></div></div>
-    <div class="mc" onclick="showTab('dining',document.querySelector('[data-tab=dining]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--orange),var(--blue))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Dining Facilities</div><div class="mc-desc">Dining tents, tables, benches, kitchen & mob/demob</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smDiningCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smDiningPP">&mdash;</div></div></div></div></div>
-    <div class="mc" onclick="showTab('toilets',document.querySelector('[data-tab=toilets]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--teal),var(--blue))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Toilets & Showers</div><div class="mc-desc">Containers, toilet/shower units & bins</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smToiletsCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smToiletsPP">&mdash;</div></div></div></div></div>
-    <div class="mc" onclick="showTab('handwash',document.querySelector('[data-tab=handwash]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--blue),var(--teal))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Handwash Stations</div><div class="mc-desc">Handwash containers, stations & bins</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smHandwashCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smHandwashPP">&mdash;</div></div></div></div></div>
-    <div class="mc" onclick="showTab('others',document.querySelector('[data-tab=others]'))" style="opacity:.4;border-style:dashed"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body" style="text-align:center;padding:24px"><div style="font-size:10px;color:var(--w3);text-transform:uppercase;letter-spacing:1px">Medical · Laundry · GP Tent · Gym · MWR · Office · Utilities</div><div style="font-size:9px;color:var(--w3);margin-top:4px;font-style:italic">Grouped under Others</div></div></div>
-  </div></div></div>
-
-  <div class="pnl" style="animation-delay:.3s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Cost Waterfall</div></div><div class="pnl-b">
-    <div class="wf-r"><div class="wf-d" style="background:var(--gold)"></div><div class="wf-nm">Accommodation</div><div class="wf-bw"><div class="wf-bf" id="wfbA" style="background:var(--gold)"></div></div><div class="wf-v" id="wfvA">&mdash;</div><div class="wf-p" id="wfpA">&mdash;</div></div>
-    <div class="wf-r"><div class="wf-d" style="background:var(--orange)"></div><div class="wf-nm">Dining</div><div class="wf-bw"><div class="wf-bf" id="wfbD" style="background:var(--orange)"></div></div><div class="wf-v" id="wfvD">&mdash;</div><div class="wf-p" id="wfpD">&mdash;</div></div>
-    <div class="wf-r"><div class="wf-d" style="background:var(--teal)"></div><div class="wf-nm">Toilets & Showers</div><div class="wf-bw"><div class="wf-bf" id="wfbT2" style="background:var(--teal)"></div></div><div class="wf-v" id="wfvT2">&mdash;</div><div class="wf-p" id="wfpT2">&mdash;</div></div>
-    <div class="wf-r"><div class="wf-d" style="background:var(--blue)"></div><div class="wf-nm">Handwash Stations</div><div class="wf-bw"><div class="wf-bf" id="wfbHW" style="background:var(--blue)"></div></div><div class="wf-v" id="wfvHW">&mdash;</div><div class="wf-p" id="wfpHW">&mdash;</div></div>
-    <div class="wf-r" style="opacity:.3"><div class="wf-d" style="background:var(--w2)"></div><div class="wf-nm">Others</div><div class="wf-bw"><div class="wf-bf"></div></div><div class="wf-v">&mdash;</div><div class="wf-p">&mdash;</div></div>
-    <div class="wf-r wf-tot"><div class="wf-d" style="background:var(--navy)"></div><div class="wf-nm">Grand Total</div><div class="wf-bw"><div class="wf-bf" id="wfbT" style="background:var(--navy);width:100%"></div></div><div class="wf-v" id="wfvT">&mdash;</div><div class="wf-p">100%</div></div>
-  </div></div>
-
-  <div class="pnl" style="animation-delay:.4s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Project Summary</div></div><div class="pnl-b"><table class="stbl">
-    <tr><td class="sk">Client</td><td class="sv" id="sClient">&mdash;</td></tr>
-    <tr><td class="sk">Camp Strength</td><td class="sv" id="sPeople">&mdash;</td></tr>
-    <tr><td class="sk">Accom. Tent Material</td><td class="sv" id="sMaterial">&mdash;</td></tr>
-    <tr><td class="sk">People per Accom. Tent</td><td class="sv" id="sPpt">&mdash;</td></tr>
-    <tr><td class="sk">Duration & Location</td><td class="sv" id="sLocation">&mdash;</td></tr>
-    <tr class="st-total"><td class="sk" style="font-family:var(--serif);color:var(--navy)">Total Estimated Cost</td><td class="sv" id="sTotal">&mdash; USD</td></tr>
-    <tr class="st-pp"><td class="sk">Cost per Person</td><td class="sv" id="sPP">&mdash; USD</td></tr>
-  </table></div></div>
+<div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Project Details</div><div class="pnl-s">Global parameters</div></div><div class="pnl-b">
+<div class="ig" style="grid-template-columns:1fr 1fr 1fr 1fr">
+<div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="numPeople" value="500" min="1" step="1" oninput="calcAll()"></div>
+<div><div class="il"><div class="id"></div>Accom. Tent Material</div><select class="ic" id="a_materials" onchange="calcAll()"><option>Insulated (Hard) & Fire Retardant</option><option>Insulated (Sandwich Panel) & Fire Retardant</option></select></div>
+<div><div class="il"><div class="id"></div>People per Accom. Tent</div><select class="ic" id="a_ppt" onchange="calcAll()"><option value="25">25</option><option value="50">50</option><option value="100" selected>100</option></select></div>
+<div><div class="il"><div class="id"></div>Duration & Location</div><input class="ic" id="location" placeholder="e.g. 6 Months, Abu Dhabi" oninput="updateAll()"></div>
 </div>
-
-<!-- ═══ ACCOMMODATION ═══ -->
-<div class="section" id="sec-accom">
-  <div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Accommodation — Inputs</div></div><div class="pnl-b"><div class="ig ig-3">
-    <div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="a_people" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
-    <div><div class="il"><div class="id"></div>Tent Material</div><input class="ic" id="a_mat_display" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
-    <div><div class="il"><div class="id"></div>People per Tent</div><input class="ic" id="a_ppt_display" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
-  </div>
-  <!-- Tent info banner -->
-  <div class="shift-b" style="margin-top:16px">
-    <div class="shift-badge" id="a_tentInfo" style="background:var(--navy)">—</div>
-    <div class="shift-info">Part: <strong id="a_partNum">—</strong> · Tent area: <strong id="a_areaDisp">—</strong> sqm · Cost per tent: <strong id="a_costPerTent">—</strong> USD</div>
-  </div>
-  </div></div>
-
-  <div class="pnl" style="animation-delay:.15s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div><div class="pnl-b">
-    <div class="cr cr-2"><div class="ct c-infra"><div class="ct-l">Tent Infrastructure Total</div><div class="ct-v" id="a_infraT">&mdash;</div><div style="font-size:9px;color:var(--w3);margin-top:6px" id="a_infraSub"></div></div><div class="ct c-furn"><div class="ct-l">Furnishing Total</div><div class="ct-v" id="a_furnT">&mdash;</div></div></div>
-  </div></div>
-
-  <div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Infrastructure Requirements</div></div><div class="pnl-b"><div class="rg rg-4">
-    <div class="rc pri"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21V11h6v10"/><line x1="3" y1="7" x2="21" y2="7"/></svg></div><div class="rc-q" id="a_rTent">&mdash;</div><div class="rc-n">Sleeping Tents</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div><div class="rc-q" id="a_rBunk">&mdash;</div><div class="rc-n">Bunk Beds</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="1"/><line x1="5" y1="10" x2="19" y2="10"/><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="15" r="1.5"/></svg></div><div class="rc-q" id="a_rLock">&mdash;</div><div class="rc-n">Lockers</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="2" y="10" width="20" height="8" rx="2"/><path d="M4 10V8a2 2 0 012-2h12a2 2 0 012 2v2"/></svg></div><div class="rc-q" id="a_rMat">&mdash;</div><div class="rc-n">Mattresses</div><div class="rc-s">Twin</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="M2 8h20"/></svg></div><div class="rc-q" id="a_rLin">&mdash;</div><div class="rc-n">Linen Sets</div><div class="rc-s">2× people</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="6"/></svg></div><div class="rc-q" id="a_rPil">&mdash;</div><div class="rc-n">Pillows</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg></div><div class="rc-q" id="a_rBla">&mdash;</div><div class="rc-n">Blankets</div><div class="rc-s">2× people</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M4 21V10l8-7 8 7v11"/><rect x="9" y="14" width="6" height="7"/></svg></div><div class="rc-q">0</div><div class="rc-n">Bunkers</div></div>
-  </div></div></div>
-
-  <!-- Admin-only assumptions -->
-  <div class="pnl admin-only" style="animation-delay:.25s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions & Unit Rates</div></div><div class="pnl-b">
-    <div class="ag">
-      <div class="at"><label>Tent Area (sqm)</label><div class="av" id="a_area">300</div><div class="au">= People/Tent × 6</div></div>
-      <div class="at"><label>External Doors × 2</label><input type="number" id="a_doors" value="1900" min="0" oninput="calcAll()"><div class="au">USD per tent</div></div>
-      <div class="at"><label>Flooring / sqm</label><input type="number" id="a_flooring" value="150" min="0" oninput="calcAll()"><div class="au">USD</div></div>
-      <div class="at"><label>Vinyl / sqm</label><input type="number" id="a_vinyl" value="43" min="0" oninput="calcAll()"><div class="au">USD</div></div>
-      <div class="at"><label>MEP Load / sqm</label><input type="number" id="a_mepL" value="0.50" min="0" step=".01" oninput="calcAll()"><div class="au">kW (display only)</div></div>
-      <div class="at"><label>HVAC Load / sqm</label><input type="number" id="a_hvacL" value="0.135" min="0" step=".001" oninput="calcAll()"><div class="au">kW (display only)</div></div>
-    </div>
-    <div class="dl"><span>Furnishing Unit Prices (USD)</span></div>
-    <div class="fg fg-6">
-      <div class="ft"><label>Bunk Beds</label><input type="number" id="a_pBunk" value="550" min="0" oninput="calcAll()"></div>
-      <div class="ft"><label>Lockers</label><input type="number" id="a_pLock" value="225" min="0" oninput="calcAll()"></div>
-      <div class="ft"><label>Mattress</label><input type="number" id="a_pMat" value="100" min="0" oninput="calcAll()"></div>
-      <div class="ft"><label>Linen Set</label><input type="number" id="a_pLin" value="18" min="0" oninput="calcAll()"></div>
-      <div class="ft"><label>Pillows</label><input type="number" id="a_pPil" value="10" min="0" oninput="calcAll()"></div>
-      <div class="ft"><label>Blanket</label><input type="number" id="a_pBla" value="20" min="0" oninput="calcAll()"></div>
-    </div>
-  </div></div>
-</div>
-
-<!-- ═══ DINING ═══ -->
-<div class="section" id="sec-dining">
-  <div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Dining — Inputs</div></div><div class="pnl-b"><div class="ig ig-1"><div><div class="il"><div class="id"></div>Number of People (Camp Strength)</div><input type="number" class="ic" id="d_people" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div></div>
-  <div class="shift-b" style="margin-top:16px">
-    <div class="shift-badge" id="d_shiftBadge">&mdash;</div>
-    <div class="shift-info">Capacity: <strong id="d_capDisp">&mdash;</strong>/tent · <strong id="d_shiftCount">&mdash;</strong> shift(s) · Area: <strong id="d_areaDisp">&mdash;</strong> sqm · Cost/tent: <strong id="d_costPerTent">&mdash;</strong> USD</div>
-  </div>
-  </div></div>
-
-  <div class="pnl" style="animation-delay:.15s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div><div class="pnl-b">
-    <div class="cr cr-3">
-      <div class="ct c-infra"><div class="ct-l">Dining Tent Infrastructure</div><div class="ct-v" id="d_infraT">&mdash;</div><div style="font-size:9px;color:var(--w3);margin-top:6px" id="d_infraSub"></div></div>
-      <div class="ct c-furn-o"><div class="ct-l">Tables</div><div class="ct-v" id="d_tableCost">&mdash;</div></div>
-      <div class="ct c-furn-o"><div class="ct-l">Benches</div><div class="ct-v" id="d_benchCost">&mdash;</div></div>
-    </div>
-    <div class="cr cr-2" style="margin-top:12px">
-      <div class="ct c-navy"><div class="ct-l">Kitchen & Storage (Annual)</div><div class="ct-v" id="d_kitchenCost">&mdash;</div></div>
-      <div class="ct c-navy"><div class="ct-l">Mob / Demob</div><div class="ct-v" id="d_mobCost">&mdash;</div></div>
-    </div>
-  </div></div>
-
-  <div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Infrastructure Requirements</div></div><div class="pnl-b"><div class="rg rg-4">
-    <div class="rc pri"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21V11h6v10"/><line x1="3" y1="7" x2="21" y2="7"/></svg></div><div class="rc-q" id="d_rTent">&mdash;</div><div class="rc-n">Dining Tents</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="8" rx="1"/><line x1="3" y1="14" x2="21" y2="14"/></svg></div><div class="rc-q" id="d_rTab">&mdash;</div><div class="rc-n">Tables</div><div class="rc-s">= (Cap÷6) × Tents</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="4" y="14" width="16" height="4" rx="1"/><line x1="6" y1="18" x2="6" y2="21"/><line x1="18" y1="18" x2="18" y2="21"/></svg></div><div class="rc-q" id="d_rBen">&mdash;</div><div class="rc-n">Benches</div><div class="rc-s">= Tables × 2</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div><div class="rc-q" id="d_rKitchen">&mdash;</div><div class="rc-n">Kitchen & Storage</div><div class="rc-s">Container units</div></div>
-  </div></div></div>
-
-  <div class="pnl admin-only" style="animation-delay:.25s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions & Unit Rates</div></div><div class="pnl-b">
-    <div class="ag">
-      <div class="at"><label>Tent Cost / sqm</label><input type="number" id="d_tcSqm" value="245" min="0" step="1" oninput="calcAll()"><div class="au">USD</div></div>
-      <div class="at"><label>External Door Cost</label><input type="number" id="d_doorCost" value="950" min="0" oninput="calcAll()"><div class="au">USD per door</div></div>
-      <div class="at"><label>Flooring / sqm</label><input type="number" id="d_flooring" value="150" min="0" oninput="calcAll()"><div class="au">USD</div></div>
-      <div class="at"><label>Vinyl / sqm</label><input type="number" id="d_vinyl" value="43" min="0" oninput="calcAll()"><div class="au">USD</div></div>
-      <div class="at"><label>Kitchen & Storage (Annual)</label><input type="number" id="d_kitchenBase" value="595000" min="0" oninput="calcAll()"><div class="au">USD base ÷ people × 12</div></div>
-      <div class="at"><label>Mob / Demob</label><input type="number" id="d_mobdemob" value="470000" min="0" oninput="calcAll()"><div class="au">USD fixed</div></div>
-    </div>
-    <div class="dl"><span>Furnishing (USD)</span></div>
-    <div class="fg fg-2">
-      <div class="ft"><label>Table</label><input type="number" id="d_pTab" value="600" min="0" oninput="calcAll()"></div>
-      <div class="ft"><label>Bench</label><input type="number" id="d_pBen" value="250" min="0" oninput="calcAll()"></div>
-    </div>
-  </div></div>
-</div>
-
-<!-- ═══ TOILETS & SHOWERS ═══ -->
-<div class="section" id="sec-toilets">
-  <div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Toilets & Showers — Inputs</div></div><div class="pnl-b">
-    <div class="ig ig-1"><div><div class="il"><div class="id"></div>Number of People (Camp Strength)</div><input type="number" class="ic" id="t_people" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div></div>
-    <div class="shift-b" style="margin-top:16px">
-      <div class="shift-badge" id="t_info" style="background:var(--teal)">&mdash;</div>
-      <div class="shift-info"><strong id="t_containers">&mdash;</strong> containers · <strong id="t_unitsTotal">&mdash;</strong> toilet/shower units · <strong id="t_areaTotal">&mdash;</strong> sqm · 1 per 10 people</div>
-    </div>
-  </div></div>
-
-  <div class="pnl" style="animation-delay:.15s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div><div class="pnl-b">
-    <div class="cr cr-2">
-      <div class="ct c-infra"><div class="ct-l">Container Infrastructure</div><div class="ct-v" id="t_infraT">&mdash;</div><div style="font-size:9px;color:var(--w3);margin-top:6px" id="t_infraSub"></div></div>
-      <div class="ct c-furn"><div class="ct-l">Bins</div><div class="ct-v" id="t_binsCost">&mdash;</div></div>
-    </div>
-  </div></div>
-
-  <div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Infrastructure Requirements</div></div><div class="pnl-b"><div class="rg rg-3">
-    <div class="rc pri"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg></div><div class="rc-q" id="t_rContainers">&mdash;</div><div class="rc-n">Containers</div><div class="rc-s">ROUNDUP(people÷24)</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M4 21V10l8-7 8 7v11"/><rect x="9" y="14" width="6" height="7"/></svg></div><div class="rc-q" id="t_rUnits">&mdash;</div><div class="rc-n">Toilet/Shower Units</div><div class="rc-s">3 per container</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M4 6h16a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1z"/><line x1="8" y1="6" x2="8" y2="18"/></svg></div><div class="rc-q" id="t_rBins">&mdash;</div><div class="rc-n">Bins</div><div class="rc-s">6 × units per container</div></div>
-  </div></div></div>
-
-  <div class="pnl admin-only" style="animation-delay:.25s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions & Unit Rates</div></div><div class="pnl-b">
-    <div class="ag">
-      <div class="at"><label>Units per Container</label><input type="number" id="t_unitsPerC" value="3" min="1" oninput="calcAll()"></div>
-      <div class="at"><label>Area per Container (sqm)</label><div class="av">14.4</div><div class="au">Fixed</div></div>
-      <div class="at"><label>Cost per Container (USD)</label><input type="number" id="t_containerCost" value="25000" min="0" oninput="calcAll()"></div>
-      <div class="at"><label>MEP Cost / sqm (USD)</label><input type="number" id="t_mepSqm" value="40" min="0" step="1" oninput="calcAll()"></div>
-      <div class="at"><label>HVAC Cost / sqm (USD)</label><input type="number" id="t_hvacSqm" value="130" min="0" step="1" oninput="calcAll()"></div>
-      <div class="at"><label>Bins Cost (USD each)</label><input type="number" id="t_binCost" value="10" min="0" oninput="calcAll()"></div>
-    </div>
-  </div></div>
-</div>
-
-<!-- ═══ HANDWASH STATIONS ═══ -->
-<div class="section" id="sec-handwash">
-  <div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Handwash Stations — Inputs</div></div><div class="pnl-b">
-    <div class="ig ig-1"><div><div class="il"><div class="id"></div>Number of People (Camp Strength)</div><input type="number" class="ic" id="hw_people" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div></div>
-    <div class="shift-b" style="margin-top:16px">
-      <div class="shift-badge" id="hw_info" style="background:var(--blue)">&mdash;</div>
-      <div class="shift-info">Part: <strong id="hw_partNum">&mdash;</strong> · <strong id="hw_stationsTotal">&mdash;</strong> stations · 14.4 sqm each · $<strong id="hw_costPerC">&mdash;</strong>/container</div>
-    </div>
-  </div></div>
-
-  <div class="pnl" style="animation-delay:.15s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div><div class="pnl-b">
-    <div class="cr cr-2">
-      <div class="ct c-infra"><div class="ct-l">Container Infrastructure</div><div class="ct-v" id="hw_infraT">&mdash;</div><div style="font-size:9px;color:var(--w3);margin-top:6px" id="hw_infraSub"></div></div>
-      <div class="ct c-furn"><div class="ct-l">Bins</div><div class="ct-v" id="hw_binsCost">&mdash;</div></div>
-    </div>
-  </div></div>
-
-  <div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Infrastructure Requirements</div></div><div class="pnl-b"><div class="rg rg-3">
-    <div class="rc pri"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div class="rc-q" id="hw_rContainers">&mdash;</div><div class="rc-n">Containers</div><div class="rc-s" id="hw_rContSub"></div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M5 12h14"/><path d="M7 18h10a2 2 0 002-2v-2H5v2a2 2 0 002 2z"/></svg></div><div class="rc-q" id="hw_rStations">&mdash;</div><div class="rc-n">Handwash Stations</div><div class="rc-s">15 per container</div></div>
-    <div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M4 6h16a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1z"/><line x1="8" y1="6" x2="8" y2="18"/></svg></div><div class="rc-q" id="hw_rBins">&mdash;</div><div class="rc-n">Bins</div><div class="rc-s">2 per container</div></div>
-  </div></div></div>
-
-  <div class="pnl admin-only" style="animation-delay:.25s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions & Unit Rates</div></div><div class="pnl-b">
-    <div class="ag">
-      <div class="at"><label>Stations per Container</label><div class="av">15</div></div>
-      <div class="at"><label>Container Area (sqm)</label><div class="av">14.4</div><div class="au">2.4 × 6</div></div>
-      <div class="at"><label>Cost per Container (USD)</label><input type="number" id="hw_containerCost" value="5486" min="0" oninput="calcAll()"></div>
-      <div class="at"><label>MEP Cost / kW (USD)</label><input type="number" id="hw_mepKw" value="24.57" min="0" step=".01" oninput="calcAll()"></div>
-      <div class="at"><label>HVAC Cost / kW (USD)</label><input type="number" id="hw_hvacKw" value="77.51" min="0" step=".01" oninput="calcAll()"></div>
-      <div class="at"><label>Bins Cost (USD each)</label><input type="number" id="hw_binCost" value="0" min="0" oninput="calcAll()"></div>
-    </div>
-  </div></div>
-</div>
-
-<div class="section" id="sec-others"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">&mdash;</div><div class="pnl-t">Other Modules</div><div class="pnl-s">Pending</div></div><div class="pnl-b" style="padding:32px;color:var(--w3)">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-    <div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Medical Facilities</div><div style="font-size:10px;color:var(--w4)">Medical tents, examination beds, pharmacy & observation wards</div></div>
-    <div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Laundry</div><div style="font-size:10px;color:var(--w4)">Laundry tents, washing machines, dryers & water connections</div></div>
-    <div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">General Purpose Tent</div><div style="font-size:10px;color:var(--w4)">Multi-use structures for briefings, storage & assembly</div></div>
-    <div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Gym</div><div style="font-size:10px;color:var(--w4)">Fitness tent, equipment, flooring & ventilation</div></div>
-    <div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">MWR</div><div style="font-size:10px;color:var(--w4)">Morale, Welfare & Recreation facilities</div></div>
-    <div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Office</div><div style="font-size:10px;color:var(--w4)">Admin tents, workstations & IT infrastructure</div></div>
-    <div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px;grid-column:1/-1"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Utilities (Power / Water)</div><div style="font-size:10px;color:var(--w4)">Generators, fuel storage, power distribution, water treatment & pumping</div></div>
-  </div>
+<div class="note-box"><strong style="color:var(--navy)">NOTE:</strong> This is Ex-works UAE, purchase pricing ONLY &amp; logistics / freight cost will be provided based on mode of transport, total volume, and locations. Leasing options available on request.</div>
+</div></div>
+<div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Module Overview</div></div><div class="pnl-b"><div class="mc-grid">
+<div class="mc" onclick="showTab('accom',document.querySelector('[data-tab=accom]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--gold),var(--teal))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Accommodation</div><div class="mc-desc">Sleeping tents & furnishing</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smAccomCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smAccomPP">&mdash;</div></div></div></div></div>
+<div class="mc" onclick="showTab('dining',document.querySelector('[data-tab=dining]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--orange),var(--blue))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Dining Facilities</div><div class="mc-desc">Dining tents, tables, benches, kitchen</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smDiningCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smDiningPP">&mdash;</div></div></div></div></div>
+<div class="mc" onclick="showTab('toilets',document.querySelector('[data-tab=toilets]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--teal),var(--blue))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Toilets & Showers</div><div class="mc-desc">Containers, units & bins</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smToiletsCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smToiletsPP">&mdash;</div></div></div></div></div>
+<div class="mc" onclick="showTab('handwash',document.querySelector('[data-tab=handwash]'))"><div class="mc-stripe" style="background:linear-gradient(90deg,var(--blue),var(--teal))"></div><div class="mc-body"><div class="mc-top"><div><div class="mc-title">Handwash Stations</div><div class="mc-desc">Handwash containers & bins</div></div><div class="mc-badge mc-active">Active</div></div><div class="mc-costs"><div><div class="mc-cl">Module Cost</div><div class="mc-cv" id="smHandwashCost">&mdash;</div></div><div><div class="mc-cl">Per Person</div><div class="mc-cv" id="smHandwashPP">&mdash;</div></div></div></div></div>
+<div class="mc" onclick="showTab('others',document.querySelector('[data-tab=others]'))" style="opacity:.4;border-style:dashed"><div class="mc-stripe" style="background:var(--w2)"></div><div class="mc-body" style="text-align:center;padding:24px"><div style="font-size:10px;color:var(--w3);text-transform:uppercase;letter-spacing:1px">Medical · Laundry · GP Tent · Gym · MWR · Office · Utilities</div></div></div>
 </div></div></div>
-
-<div class="ftr"><div class="ftr-l">Draft Designed by Albaddasolutions · Camp Cost Calculator · Confidential</div><div class="ftr-r"><div></div><div></div><div></div><div></div></div></div>
+<div class="pnl" style="animation-delay:.3s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Cost Waterfall</div></div><div class="pnl-b">
+<div class="wf-r"><div class="wf-d" style="background:var(--gold)"></div><div class="wf-nm">Accommodation</div><div class="wf-bw"><div class="wf-bf" id="wfbA" style="background:var(--gold)"></div></div><div class="wf-v" id="wfvA">&mdash;</div><div class="wf-p" id="wfpA">&mdash;</div></div>
+<div class="wf-r"><div class="wf-d" style="background:var(--orange)"></div><div class="wf-nm">Dining</div><div class="wf-bw"><div class="wf-bf" id="wfbD" style="background:var(--orange)"></div></div><div class="wf-v" id="wfvD">&mdash;</div><div class="wf-p" id="wfpD">&mdash;</div></div>
+<div class="wf-r"><div class="wf-d" style="background:var(--teal)"></div><div class="wf-nm">Toilets & Showers</div><div class="wf-bw"><div class="wf-bf" id="wfbT2" style="background:var(--teal)"></div></div><div class="wf-v" id="wfvT2">&mdash;</div><div class="wf-p" id="wfpT2">&mdash;</div></div>
+<div class="wf-r"><div class="wf-d" style="background:var(--blue)"></div><div class="wf-nm">Handwash</div><div class="wf-bw"><div class="wf-bf" id="wfbHW" style="background:var(--blue)"></div></div><div class="wf-v" id="wfvHW">&mdash;</div><div class="wf-p" id="wfpHW">&mdash;</div></div>
+<div class="wf-r" style="opacity:.3"><div class="wf-d" style="background:var(--w2)"></div><div class="wf-nm">Others</div><div class="wf-bw"><div class="wf-bf"></div></div><div class="wf-v">&mdash;</div><div class="wf-p">&mdash;</div></div>
+<div class="wf-r wf-tot"><div class="wf-d" style="background:var(--navy)"></div><div class="wf-nm">Grand Total</div><div class="wf-bw"><div class="wf-bf" id="wfbT" style="background:var(--navy);width:100%"></div></div><div class="wf-v" id="wfvT">&mdash;</div><div class="wf-p">100%</div></div>
+</div></div>
+<div class="pnl" style="animation-delay:.4s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Project Summary</div></div><div class="pnl-b"><table class="stbl">
+<tr><td class="sk">Camp Strength</td><td class="sv" id="sPeople">&mdash;</td></tr>
+<tr><td class="sk">Accom. Tent Material</td><td class="sv" id="sMaterial">&mdash;</td></tr>
+<tr><td class="sk">People per Accom. Tent</td><td class="sv" id="sPpt">&mdash;</td></tr>
+<tr><td class="sk">Duration & Location</td><td class="sv" id="sLocation">&mdash;</td></tr>
+<tr class="st-total"><td class="sk" style="font-family:var(--serif);color:var(--navy)">Total Estimated Cost</td><td class="sv" id="sTotal">&mdash; USD</td></tr>
+<tr class="st-pp"><td class="sk">Cost per Person</td><td class="sv" id="sPP">&mdash; USD</td></tr>
+</table></div></div>
 </div>
-
+<!-- ACCOMMODATION -->
+<div class="section" id="sec-accom">
+<div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Accommodation — Inputs</div></div><div class="pnl-b">
+<div class="ig ig-3">
+<div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="a_people" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
+<div><div class="il"><div class="id"></div>Tent Material</div><input class="ic" id="a_mat_display" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
+<div><div class="il"><div class="id"></div>People per Tent</div><input class="ic" id="a_ppt_display" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div>
+</div>
+<div class="shift-b" style="margin-top:16px"><div class="shift-badge" id="a_tentInfo" style="background:var(--navy)">—</div><div class="shift-info">Part: <strong id="a_partNum">—</strong> · Tent area: <strong id="a_areaDisp">—</strong> sqm · Cost/tent: <strong id="a_costPerTent">—</strong> USD</div></div>
+<div class="note-box"><strong>6 Sqm / Person</strong> · Note: The area of tent is standard — depending on Sqm/Person the number of people and furnishing can be updated and validated with Albaddad Solutions team.</div>
+</div></div>
+<div class="pnl" style="animation-delay:.15s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div><div class="pnl-b">
+<div class="cr cr-2"><div class="ct c-infra"><div class="ct-l">Tent Infrastructure Total</div><div class="ct-v" id="a_infraT">&mdash;</div><div style="font-size:9px;color:var(--w3);margin-top:6px" id="a_infraSub"></div></div><div class="ct c-furn"><div class="ct-l">Furnishing Total</div><div class="ct-v" id="a_furnT">&mdash;</div></div></div>
+</div></div>
+<div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Infrastructure Requirements</div></div><div class="pnl-b"><div class="rg rg-4">
+<div class="rc pri"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21V11h6v10"/><line x1="3" y1="7" x2="21" y2="7"/></svg></div><div class="rc-q" id="a_rTent">&mdash;</div><div class="rc-n">Sleeping Tents</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div><div class="rc-q" id="a_rBunk">&mdash;</div><div class="rc-n">Bunk Beds</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="1"/><line x1="5" y1="10" x2="19" y2="10"/></svg></div><div class="rc-q" id="a_rLock">&mdash;</div><div class="rc-n">Lockers</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="2" y="10" width="20" height="8" rx="2"/></svg></div><div class="rc-q" id="a_rMat">&mdash;</div><div class="rc-n">Mattresses</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="M2 8h20"/></svg></div><div class="rc-q" id="a_rLin">&mdash;</div><div class="rc-n">Linen Sets ×2</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="6"/></svg></div><div class="rc-q" id="a_rPil">&mdash;</div><div class="rc-n">Pillows ×2</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg></div><div class="rc-q" id="a_rBla">&mdash;</div><div class="rc-n">Blankets ×2</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M4 21V10l8-7 8 7v11"/><rect x="9" y="14" width="6" height="7"/></svg></div><div class="rc-q">0</div><div class="rc-n">Bunkers</div></div>
+</div></div></div>
+<div class="pnl admin-only" style="animation-delay:.25s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions & Unit Rates</div></div><div class="pnl-b">
+<div class="ag"><div class="at"><label>Tent Area (sqm)</label><div class="av" id="a_area">600</div><div class="au">= People/Tent × 6</div></div><div class="at"><label>MEP Load / sqm</label><input type="number" id="a_mepL" value="0.05" min="0" step=".01" oninput="calcAll()"><div class="au">kW</div></div><div class="at"><label>HVAC Load / sqm</label><input type="number" id="a_hvacL" value="0.135" min="0" step=".001" oninput="calcAll()"><div class="au">kW</div></div></div>
+<div class="dl"><span>Furnishing Unit Prices (USD)</span></div>
+<div class="fg fg-6">
+<div class="ft"><label>Bunk Beds</label><input type="number" id="a_pBunk" value="250" min="0" oninput="calcAll()"></div>
+<div class="ft"><label>Lockers</label><input type="number" id="a_pLock" value="225" min="0" oninput="calcAll()"></div>
+<div class="ft"><label>Mattress</label><input type="number" id="a_pMat" value="100" min="0" oninput="calcAll()"></div>
+<div class="ft"><label>Linen Set</label><input type="number" id="a_pLin" value="50" min="0" oninput="calcAll()"></div>
+<div class="ft"><label>Pillows</label><input type="number" id="a_pPil" value="15" min="0" oninput="calcAll()"></div>
+<div class="ft"><label>Blanket</label><input type="number" id="a_pBla" value="50" min="0" oninput="calcAll()"></div>
+</div></div></div>
+</div>
+<!-- DINING -->
+<div class="section" id="sec-dining">
+<div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Dining — Inputs</div></div><div class="pnl-b">
+<div class="ig ig-1"><div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="d_people" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div></div>
+<div class="shift-b" style="margin-top:16px"><div class="shift-badge" id="d_shiftBadge" style="background:var(--orange)">—</div><div class="shift-info">Part: <strong id="d_partNum">—</strong> · Capacity: <strong id="d_capDisp">—</strong>/tent · <strong id="d_shiftCount">—</strong> shift(s) · Area: <strong id="d_areaDisp">—</strong> sqm</div></div>
+</div></div>
+<div class="pnl" style="animation-delay:.15s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div><div class="pnl-b">
+<div class="cr cr-2"><div class="ct c-infra"><div class="ct-l">Dining Tent Infrastructure</div><div class="ct-v" id="d_infraT">&mdash;</div><div style="font-size:9px;color:var(--w3);margin-top:6px" id="d_infraSub"></div></div><div class="ct c-navy"><div class="ct-l">Kitchen & Storage</div><div class="ct-v" id="d_kitchenCost">&mdash;</div><div style="font-size:9px;color:var(--w3);margin-top:6px" id="d_kitchenSub"></div></div></div>
+<div class="cr cr-2" style="margin-top:12px"><div class="ct c-furn-o"><div class="ct-l">Tables</div><div class="ct-v" id="d_tableCost">&mdash;</div></div><div class="ct c-furn-o"><div class="ct-l">Benches</div><div class="ct-v" id="d_benchCost">&mdash;</div></div></div>
+</div></div>
+<div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Infrastructure Requirements</div></div><div class="pnl-b"><div class="rg rg-4">
+<div class="rc pri"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M3 21V7l9-4 9 4v14"/><line x1="3" y1="7" x2="21" y2="7"/></svg></div><div class="rc-q" id="d_rTent">&mdash;</div><div class="rc-n">Dining Tents</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="8" rx="1"/></svg></div><div class="rc-q" id="d_rTab">&mdash;</div><div class="rc-n">Tables</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="4" y="14" width="16" height="4" rx="1"/></svg></div><div class="rc-q" id="d_rBen">&mdash;</div><div class="rc-n">Benches</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></div><div class="rc-q" id="d_rKitchen">&mdash;</div><div class="rc-n">Kitchen & Storage</div></div>
+</div></div></div>
+<div class="pnl admin-only" style="animation-delay:.25s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions & Unit Rates</div></div><div class="pnl-b">
+<div class="ag"><div class="at"><label>Tent (1050 sqm)</label><div class="av">$563,230.44</div></div><div class="at"><label>Tent (1500 sqm)</label><div class="av">$720,549.19</div></div><div class="at"><label>Tent (3150 sqm)</label><div class="av">$1,500,634.75</div></div></div>
+<div class="dl"><span>Furnishing (USD)</span></div>
+<div class="fg fg-2"><div class="ft"><label>Table</label><input type="number" id="d_pTab" value="600" min="0" oninput="calcAll()"></div><div class="ft"><label>Bench</label><input type="number" id="d_pBen" value="250" min="0" oninput="calcAll()"></div></div>
+</div></div>
+</div>
+<!-- TOILETS & SHOWERS -->
+<div class="section" id="sec-toilets">
+<div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Toilets & Showers — Inputs</div></div><div class="pnl-b">
+<div class="ig ig-1"><div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="t_people" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div></div>
+<div class="shift-b" style="margin-top:16px"><div class="shift-badge" id="t_info" style="background:var(--teal)">—</div><div class="shift-info"><strong id="t_containers">—</strong> containers · <strong id="t_unitsTotal">—</strong> units · <strong id="t_areaTotal">—</strong> sqm · 1 per 10 people</div></div>
+</div></div>
+<div class="pnl" style="animation-delay:.15s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div><div class="pnl-b">
+<div class="cr cr-2"><div class="ct c-infra"><div class="ct-l">Container Infrastructure</div><div class="ct-v" id="t_infraT">&mdash;</div><div style="font-size:9px;color:var(--w3);margin-top:6px" id="t_infraSub"></div></div><div class="ct c-furn"><div class="ct-l">Bins</div><div class="ct-v" id="t_binsCost">&mdash;</div></div></div>
+</div></div>
+<div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Infrastructure Requirements</div></div><div class="pnl-b"><div class="rg rg-3">
+<div class="rc pri"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div><div class="rc-q" id="t_rContainers">&mdash;</div><div class="rc-n">Containers</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M4 21V10l8-7 8 7v11"/></svg></div><div class="rc-q" id="t_rUnits">&mdash;</div><div class="rc-n">Toilet/Shower Units</div><div class="rc-s">3 per container</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="1"/></svg></div><div class="rc-q" id="t_rBins">&mdash;</div><div class="rc-n">Bins</div><div class="rc-s">6 × containers</div></div>
+</div></div></div>
+<div class="pnl admin-only" style="animation-delay:.25s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions</div></div><div class="pnl-b"><div class="ag">
+<div class="at"><label>Units/Container</label><input type="number" id="t_unitsPerC" value="3" min="1" oninput="calcAll()"></div>
+<div class="at"><label>Area/Container</label><div class="av">14.4 sqm</div></div>
+<div class="at"><label>Container Cost</label><input type="number" id="t_containerCost" value="15000" min="0" oninput="calcAll()"></div>
+<div class="at"><label>MEP/sqm</label><input type="number" id="t_mepSqm" value="40" min="0" oninput="calcAll()"></div>
+<div class="at"><label>HVAC/sqm</label><input type="number" id="t_hvacSqm" value="130" min="0" oninput="calcAll()"></div>
+<div class="at"><label>Bins Cost</label><input type="number" id="t_binCost" value="10" min="0" oninput="calcAll()"></div>
+</div></div></div>
+</div>
+<!-- HANDWASH -->
+<div class="section" id="sec-handwash">
+<div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">01</div><div class="pnl-t">Handwash Stations — Inputs</div></div><div class="pnl-b">
+<div class="ig ig-1"><div><div class="il"><div class="id"></div>Number of People</div><input type="number" class="ic" id="hw_people" disabled style="opacity:.7;cursor:not-allowed"><div style="font-size:9px;color:var(--w3);margin-top:3px;font-style:italic">Linked from Summary</div></div></div>
+<div class="shift-b" style="margin-top:16px"><div class="shift-badge" id="hw_info" style="background:var(--blue)">—</div><div class="shift-info">Part: <strong id="hw_partNum">—</strong> · <strong id="hw_stationsTotal">—</strong> stations · $<strong id="hw_costPerC">—</strong>/container</div></div>
+</div></div>
+<div class="pnl" style="animation-delay:.15s"><div class="pnl-h"><div class="pnl-n">02</div><div class="pnl-t">Cost Summary</div></div><div class="pnl-b">
+<div class="cr cr-2"><div class="ct c-infra"><div class="ct-l">Container Infrastructure</div><div class="ct-v" id="hw_infraT">&mdash;</div><div style="font-size:9px;color:var(--w3);margin-top:6px" id="hw_infraSub"></div></div><div class="ct c-furn"><div class="ct-l">Bins</div><div class="ct-v" id="hw_binsCost">&mdash;</div></div></div>
+</div></div>
+<div class="pnl" style="animation-delay:.2s"><div class="pnl-h"><div class="pnl-n">03</div><div class="pnl-t">Infrastructure Requirements</div></div><div class="pnl-b"><div class="rg rg-3">
+<div class="rc pri"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div><div class="rc-q" id="hw_rContainers">&mdash;</div><div class="rc-n">Containers</div><div class="rc-s" id="hw_rContSub"></div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M5 12h14"/></svg></div><div class="rc-q" id="hw_rStations">&mdash;</div><div class="rc-n">Stations</div><div class="rc-s">15 per container</div></div>
+<div class="rc"><div class="rc-i"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="1"/></svg></div><div class="rc-q" id="hw_rBins">&mdash;</div><div class="rc-n">Bins</div><div class="rc-s">2 per container</div></div>
+</div></div></div>
+<div class="pnl admin-only" style="animation-delay:.25s"><div class="pnl-h"><div class="pnl-n">04</div><div class="pnl-t">Assumptions</div></div><div class="pnl-b"><div class="ag">
+<div class="at"><label>Stations/Container</label><div class="av">15</div></div>
+<div class="at"><label>Container Area</label><div class="av">14.4 sqm</div></div>
+<div class="at"><label>Container Cost</label><input type="number" id="hw_containerCost" value="5486" min="0" oninput="calcAll()"></div>
+<div class="at"><label>MEP/kW</label><input type="number" id="hw_mepKw" value="24.57" min="0" step=".01" oninput="calcAll()"></div>
+<div class="at"><label>HVAC/kW</label><input type="number" id="hw_hvacKw" value="77.51" min="0" step=".01" oninput="calcAll()"></div>
+<div class="at"><label>Bins Cost</label><input type="number" id="hw_binCost" value="0" min="0" oninput="calcAll()"></div>
+</div></div></div>
+</div>
+<!-- OTHERS -->
+<div class="section" id="sec-others"><div class="pnl" style="animation-delay:.1s"><div class="pnl-h"><div class="pnl-n">&mdash;</div><div class="pnl-t">Other Modules</div><div class="pnl-s">Pending</div></div><div class="pnl-b" style="padding:32px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Medical</div><div style="font-size:10px;color:var(--w4)">Medical tents, beds, pharmacy</div></div>
+<div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Laundry</div><div style="font-size:10px;color:var(--w4)">Washing machines, dryers</div></div>
+<div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">GP Tent</div><div style="font-size:10px;color:var(--w4)">Multi-use structures</div></div>
+<div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Gym · MWR · Office</div><div style="font-size:10px;color:var(--w4)">Fitness, recreation, admin</div></div>
+<div style="background:var(--off-white);border:1px solid var(--w1);border-radius:3px;padding:16px;grid-column:1/-1"><div style="font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Utilities (Power / Water)</div><div style="font-size:10px;color:var(--w4)">Generators, fuel, water treatment & pumping</div></div>
+</div></div></div></div>
+<div class="prop-ftr"><div class="pt"><strong>Proprietary Information:</strong> This document is issued for review/approval purposes only. It shall not be used for construction, procurement, or third-party distribution without written authorization from Albaddad Solutions LLC. Unauthorized use is strictly prohibited.</div><div class="dots"><div></div><div></div><div></div><div></div></div></div>
+</div>
 <script>
 var ADMIN_PASSWORD="Password@13579";
 function enableAdminMode(){document.body.classList.add("admin-mode");localStorage.setItem("campAdminMode","1")}
@@ -277,281 +205,127 @@ function aV(id,nv){var el=document.getElementById(id);if(!el)return;var old=AS[i
 
 function syncInputs(){var p=document.getElementById('numPeople').value;document.getElementById('a_people').value=p;document.getElementById('d_people').value=p;document.getElementById('t_people').value=p;document.getElementById('hw_people').value=p;document.getElementById('a_mat_display').value=document.getElementById('a_materials').value;document.getElementById('a_ppt_display').value=document.getElementById('a_ppt').value+' people/tent'}
 
-// ═══ ACCOMMODATION CALC (REVISED) ═══
+// ACCOMMODATION - fixed lookup prices
 function calcAccom(people){
-  var ppt=+gv('a_ppt');
-  var material=document.getElementById('a_materials').value;
-  var isHard=(material.indexOf('Hard')!==-1);
-  var tentArea=ppt*6;
-  var tents=Math.ceil(people/ppt);
-
-  // Tent cost/sqm based on material: Hard=245, Sandwich Panel=40
-  var tentCostSqm=isHard?245:40;
-
-  // Fixed rates from admin
-  var flooring=+gv('a_flooring');
-  var vinyl=+gv('a_vinyl');
-  var doors=+gv('a_doors');
-
-  // MEP cost/sqm (IFS by tent area): 150→110, 300→85, 600→70
-  var mepSqm=tentArea<=150?110:tentArea<=300?85:70;
-
-  // HVAC cost/sqm (IFS by tent area): 150→170, 300→115, 600→120
-  var hvacSqm=tentArea<=150?170:tentArea<=300?115:120;
-
-  // Door cost: ALL B18-B23 use 1×doors (single door set per tent)
-  var doorCost=1*doors;
-
-  // Cost per tent = matches B18-B23 formulas exactly
-  var costPerTent=(tentArea*tentCostSqm)+(tentArea*mepSqm)+(tentArea*hvacSqm)+doorCost+(tentArea*flooring)+(tentArea*vinyl);
-
-  // H32 = tents × cost per tent
+  var ppt=+gv('a_ppt');var material=document.getElementById('a_materials').value;
+  var isHard=(material.indexOf('Hard')!==-1);var tentArea=ppt*6;var tents=Math.ceil(people/ppt);
+  // Fixed cost per tent from Excel B14-B19
+  var costPerTent;
+  if(isHard){costPerTent=tentArea<=150?100409.25:tentArea<=300?190239.41:370484.30}
+  else{costPerTent=tentArea<=150?97850.69:tentArea<=300?186145.54:363321.62}
   var tentTotal=tents*costPerTent;
-
   // Furnishing
-  var pB=+gv('a_pBunk'),pLk=+gv('a_pLock'),pM=+gv('a_pMat');
-  var pLi=+gv('a_pLin'),pP=+gv('a_pPil'),pBl=+gv('a_pBla');
+  var pB=+gv('a_pBunk'),pLk=+gv('a_pLock'),pM=+gv('a_pMat'),pLi=+gv('a_pLin'),pP=+gv('a_pPil'),pBl=+gv('a_pBla');
   var qH=Math.floor(people/2);
   var furn=qH*pB+qH*pLk+people*pM+(people*2)*pLi+people*pP+(people*2)*pBl;
-
-  // Part number: ABS-AHSTNT (Hard) or ABS-ASPSTNT (Sandwich Panel) + area
+  // Part number
   var partPrefix=isHard?'ABS-AHSTNT':'ABS-ASPSTNT';
   var partNum=partPrefix+'-11582-3-26-'+tentArea;
-
   // UI
   setText('a_area',fN(tentArea));
-  setText('a_tentInfo',fN(tents)+' Tents × '+fN(tentArea)+' sqm');
-  setText('a_partNum',partNum);
-  setText('a_areaDisp',fN(tentArea));
+  setText('a_tentInfo',fN(tents)+' Tents \u00d7 '+fN(tentArea)+' sqm');
+  setText('a_partNum',partNum);setText('a_areaDisp',fN(tentArea));
   setText('a_costPerTent',fC(costPerTent));
-  setText('a_infraSub',fN(tents)+' tents × $'+fC(costPerTent)+' per tent');
-
+  setText('a_infraSub',fN(tents)+' tents \u00d7 $'+fC(costPerTent)+' per tent');
   aV('a_infraT',tentTotal);aV('a_furnT',furn);
-
   setText('a_rTent',fN(tents));setText('a_rBunk',fN(qH));setText('a_rLock',fN(qH));
   setText('a_rMat',fN(people));setText('a_rLin',fN(people*2));
   setText('a_rPil',fN(people));setText('a_rBla',fN(people*2));
-
   return tentTotal+furn;
 }
 
-// ═══ DINING CALC ═══
+// DINING - fixed lookup + kitchen linked to tent qty
 function calcDining(people){
-  // B6: Capacity per tent (IFS)
   var cap=people<=300?150:people<=3000?750:1500;
-
-  // B7: Shift description
-  var shifts=people<=500?'1 Shift':people<=750?'1 Shift':people<=1000?'2 Shifts — 35 min each':people<=1500?'1 Shift':'2 Shifts — 35 min each';
-
-  // C7: Shift count (for tent quantity calc)
-  var sc;
-  if(people<=150) sc=1;
-  else if(people<=300) sc=2;
-  else if(people<=750) sc=1;
-  else if(people<=1500) sc=2;
-  else sc=2;
-
-  // B8: Tent area (IFS by capacity)
+  var shifts=people<=500?'1 Shift':people<=750?'1 Shift':people<=1000?'2 Shifts \u2014 35 min each':people<=1500?'1 Shift':'2 Shifts \u2014 35 min each';
+  var sc;if(people<=150)sc=1;else if(people<=300)sc=2;else if(people<=750)sc=1;else if(people<=1500)sc=2;else sc=2;
   var tentArea=cap==150?1050:cap==750?1500:3150;
-
-  // B9: Number of dining tents = ROUNDUP(people/(cap*shiftCount))
   var tents=Math.ceil(people/(cap*sc));
-
-  // B10: External doors (IFS by capacity)
-  var extDoors=cap==150?9:cap==750?10:22;
-
-  // B19: MEP/sqm (IFS by tent area)
-  var mepSqm=tentArea==1050?65:tentArea==1500?65:60;
-
-  // B20: HVAC/sqm (IFS by tent area)
-  var hvacSqm=tentArea==1050?170:tentArea==1500?115:120;
-
-  // Admin rates
-  var tcSqm=+gv('d_tcSqm');
-  var doorCostUnit=+gv('d_doorCost');
-  var flooring=+gv('d_flooring');
-  var vinyl=+gv('d_vinyl');
-  var pT=+gv('d_pTab');
-  var pBn=+gv('d_pBen');
-  var kitchenBase=+gv('d_kitchenBase');
-  var mobdemob=+gv('d_mobdemob');
-
-  // G26: Cost per tent = (area×tentCost)+(area×flooring)+(area×vinyl)+(doors×doorCost)+(mep×area)+(hvac×area)
-  var costPerTent=(tentArea*tcSqm)+(tentArea*flooring)+(tentArea*vinyl)+(extDoors*doorCostUnit)+(mepSqm*tentArea)+(hvacSqm*tentArea);
-
-  // F26: Tent qty = MIN(2, ROUNDUP(people/(cap*2)))
+  // Fixed tent costs (ABS-DSPSTNT)
+  var costPerTent=tentArea==1050?563230.44:tentArea==1500?720549.19:1500634.75;
+  var partNum=tentArea==1050?'ABS-DSPSTNT-11582-3-26-1050':tentArea==1500?'ABS-DSPSTNT-11582-3-26-1500':'ABS-DSPSTNT-11582-3-26-3150';
   var tentQty=Math.min(2,Math.ceil(people/(cap*2)));
-
-  // H26: Tent infrastructure total
   var infraTotal=costPerTent*tentQty;
-
-  // F27: Tables = (cap/6) × tents (B9)
-  var tables=Math.floor((cap/6)*tents);
-  var benches=tables*2;
-  var tableCost=tables*pT;
-  var benchCost=benches*pBn;
-
-  // Kitchen & Storage cost per person = (595000/people)*12
-  var kitchenPerPerson=people>0?(kitchenBase/people)*12:0;
-
-  var furnTotal=tableCost+benchCost;
-
-  // Kitchen & Storage annual = (base/people)*12 * people = base*12 (H29)
-  var kitchenTotal=people>0?((kitchenBase/people)*12)*people:0;
-
-  // Mob/Demob (H30)
-  var mobTotal=+gv('d_mobdemob');
-
-  // D3 = SUM(H26:H30) — tent + tables + benches + kitchen + mob/demob
-  var total=infraTotal+furnTotal+kitchenTotal+mobTotal;
-
-  // UI updates
-  setText('d_shiftBadge',shifts);
-  setText('d_shiftCount',sc);
-  setText('d_capDisp',fN(cap));
-  setText('d_areaDisp',fN(tentArea));
-  setText('d_costPerTent',fC(costPerTent));
-  setText('d_infraSub',fN(tentQty)+' tents × $'+fC(costPerTent)+' per tent');
-
-  aV('d_infraT',infraTotal);
-  aV('d_tableCost',tableCost);
-  aV('d_benchCost',benchCost);
-  aV('d_kitchenCost',kitchenTotal);
-  aV('d_mobCost',mobTotal);
-
-  setText('d_rTent',fN(tentQty));
-  setText('d_rTab',fN(tables));
-  setText('d_rBen',fN(benches));
-  setText('d_rKitchen',people>0?'$'+fC(kitchenPerPerson)+'/pp':'—');
-
+  // Kitchen linked to tent qty (ABS-KITSPSTNT)
+  var kitchenPerTent=tentArea==1050?1255000:tentArea==1500?1990000:3130000;
+  var kitchenTotal=kitchenPerTent*tentQty;
+  var kitchenPart=tentArea==1050?'ABS-KITSPSTNT-...-1050':tentArea==1500?'ABS-KITSPSTNT-...-1500':'ABS-KITSPSTNT-...-3150';
+  // Tables/Benches
+  var pT=+gv('d_pTab'),pBn=+gv('d_pBen');
+  var tables=Math.floor((cap/6)*tents);var benches=tables*2;
+  var tableCost=tables*pT;var benchCost=benches*pBn;
+  // D3 = Tent + Tables + Benches + Kitchen (NO mob/demob)
+  var total=infraTotal+tableCost+benchCost+kitchenTotal;
+  // UI
+  setText('d_shiftBadge',shifts);setText('d_shiftCount',sc);setText('d_capDisp',fN(cap));
+  setText('d_areaDisp',fN(tentArea));setText('d_partNum',partNum);
+  setText('d_infraSub',fN(tentQty)+' tents \u00d7 $'+fC(costPerTent));
+  setText('d_kitchenSub',fN(tentQty)+' units \u00d7 $'+fC(kitchenPerTent)+' ('+kitchenPart+')');
+  aV('d_infraT',infraTotal);aV('d_tableCost',tableCost);aV('d_benchCost',benchCost);aV('d_kitchenCost',kitchenTotal);
+  setText('d_rTent',fN(tentQty));setText('d_rTab',fN(tables));setText('d_rBen',fN(benches));
+  setText('d_rKitchen',fN(tentQty)+' units');
   return total;
 }
 
-// ═══ TOILETS & SHOWERS CALC (REVISED) ═══
+// TOILETS & SHOWERS
 function calcToilets(people){
-  var unitsPerC=+gv('t_unitsPerC');
-  // B7: CEILING(people/10) — 1 container per 10 people
-  var containers=Math.ceil(people/10);
-  // B8: Total tent area = containers × 14.4 sqm
-  var areaPerContainer=14.4;
-  var totalArea=containers*areaPerContainer;
-  // Costs from admin
-  var containerCost=+gv('t_containerCost');  // B12: 25000
-  var mepSqm=+gv('t_mepSqm');              // B13: 40/sqm
-  var hvacSqm=+gv('t_hvacSqm');            // B14: 130/sqm
-  var binCostEach=+gv('t_binCost');         // B16: 10
-
-  // B15: Cost per container = (25000*1)+(14.4*mep)+(14.4*hvac)
-  var costPerContainer=containerCost+(areaPerContainer*mepSqm)+(areaPerContainer*hvacSqm);
-
-  // G19: Total building = (containers×containerCost)+(mepSqm×totalArea)+(hvacSqm×totalArea)
+  var unitsPerC=+gv('t_unitsPerC');var containers=Math.ceil(people/10);
+  var areaPerC=14.4;var totalArea=containers*areaPerC;
+  var containerCost=+gv('t_containerCost');var mepSqm=+gv('t_mepSqm');var hvacSqm=+gv('t_hvacSqm');var binCost=+gv('t_binCost');
+  var costPerC=containerCost+(areaPerC*mepSqm)+(areaPerC*hvacSqm);
   var g19=(containers*containerCost)+(mepSqm*totalArea)+(hvacSqm*totalArea);
-  // H19 = G19
-  var h19=g19;
-
-  // F20: Bins qty = 6 × containers
-  var binsQty=6*containers;
-  // G20/H20: Bins cost = containers × binCostEach
-  var h20=containers*binCostEach;
-
-  // D3 = SUM(H19:H20)
-  var total=h19+h20;
-
-  // UI
-  setText('t_info',fN(containers)+' Containers');
-  setText('t_containers',fN(containers));
-  setText('t_unitsTotal',fN(containers*unitsPerC));
-  setText('t_areaTotal',fN(Math.round(totalArea)));
-  setText('t_infraSub',fN(containers)+' containers · $'+fC(costPerContainer)+' each · '+fN(Math.round(totalArea))+' sqm total');
-  aV('t_infraT',h19);
-  aV('t_binsCost',h20);
-  setText('t_rContainers',fN(containers));
-  setText('t_rUnits',fN(containers*unitsPerC));
-  setText('t_rBins',fN(binsQty));
-
+  var binsQty=6*containers;var h20=containers*binCost;var total=g19+h20;
+  setText('t_info',fN(containers)+' Containers');setText('t_containers',fN(containers));
+  setText('t_unitsTotal',fN(containers*unitsPerC));setText('t_areaTotal',fN(Math.round(totalArea)));
+  setText('t_infraSub',fN(containers)+' containers \u00b7 $'+fC(costPerC)+' each');
+  aV('t_infraT',g19);aV('t_binsCost',h20);
+  setText('t_rContainers',fN(containers));setText('t_rUnits',fN(containers*unitsPerC));setText('t_rBins',fN(binsQty));
   return total;
 }
 
-// ═══ HANDWASH STATIONS CALC ═══
+// HANDWASH
 function calcHandwash(people){
-  // B5: Containers = MIN(IFS(<=150→2, <=750→3, <=1500→5, >1500→5), 5)
-  var containers;
-  if(people<=150) containers=2;
-  else if(people<=750) containers=3;
-  else containers=5;
+  var containers;if(people<=150)containers=2;else if(people<=750)containers=3;else containers=5;
   containers=Math.min(containers,5);
-
-  var containerArea=14.4; // B7: fixed 14.4 sqm
-  var stationsPerC=15;    // B6: 15 stations per container
-  var containerCost=+gv('hw_containerCost'); // B10: 5486
-  var mepKw=+gv('hw_mepKw');   // B11: 24.57
-  var hvacKw=+gv('hw_hvacKw'); // B12: 77.51
-  var binCost=+gv('hw_binCost'); // B16
-
-  // G19 = B7 * B10 (area × containerCost — per Excel formula)
-  var g19=containerArea*containerCost;
-  // J19 = G19 (H19 and I19 are 0)
-  var h19=g19;
-
-  // F20: Bins qty = B5 * 2
-  var binsQty=containers*2;
-  // G20/J20 = F20 * B16
-  var h20=binsQty*binCost;
-
-  // D3 = SUM(J19:J20)
-  var total=h19+h20;
-
-  // Part number
-  var partNum;
-  if(containers<=2) partNum='ABS-HSCNT-11582-3-26-14.4-150';
-  else if(containers<=3) partNum='ABS-HSCNT-11582-3-26-14.4-750';
-  else partNum='ABS-HSCNT-11582-3-26-14.4-1500';
-
-  // UI
-  setText('hw_info',fN(containers)+' Containers');
-  setText('hw_partNum',partNum);
-  setText('hw_stationsTotal',fN(containers*stationsPerC));
-  setText('hw_costPerC',fC(containerCost));
-  setText('hw_infraSub',fN(containerArea)+' sqm × $'+fC(containerCost)+'/container');
-  aV('hw_infraT',h19);
-  aV('hw_binsCost',h20);
-  setText('hw_rContainers',fN(containers));
-  setText('hw_rContSub',people<=150?'≤150 ppl':people<=750?'≤750 ppl':'≤1500+ ppl');
-  setText('hw_rStations',fN(containers*stationsPerC));
-  setText('hw_rBins',fN(binsQty));
-
+  var containerArea=14.4;var containerCost=+gv('hw_containerCost');var binCost=+gv('hw_binCost');
+  var g19=containerArea*containerCost;var binsQty=containers*2;var h20=binsQty*binCost;var total=g19+h20;
+  var partNum;if(containers<=2)partNum='ABS-HSCNT-11582-3-26-14.4-150';else if(containers<=3)partNum='ABS-HSCNT-11582-3-26-14.4-750';else partNum='ABS-HSCNT-11582-3-26-14.4-1500';
+  setText('hw_info',fN(containers)+' Containers');setText('hw_partNum',partNum);
+  setText('hw_stationsTotal',fN(containers*15));setText('hw_costPerC',fC(containerCost));
+  setText('hw_infraSub',fN(containerArea)+' sqm \u00d7 $'+fC(containerCost)+'/container');
+  aV('hw_infraT',g19);aV('hw_binsCost',h20);
+  setText('hw_rContainers',fN(containers));setText('hw_rContSub',people<=150?'\u2264150 ppl':people<=750?'\u2264750 ppl':'\u22651500 ppl');
+  setText('hw_rStations',fN(containers*15));setText('hw_rBins',fN(binsQty));
   return total;
 }
 
 function calcAll(){
-  syncInputs();
-  var people=+(document.getElementById('numPeople').value)||0;
+  syncInputs();var people=+(document.getElementById('numPeople').value)||0;
   var accom=calcAccom(people);var dining=calcDining(people);var toilets=calcToilets(people);var handwash=calcHandwash(people);
   var grand=accom+dining+toilets+handwash;
   aV('grandTotal',grand);
-  document.getElementById('tabAccom').textContent=fS(accom);document.getElementById('tabDining').textContent=fS(dining);document.getElementById('tabToilets').textContent=fS(toilets);document.getElementById('tabHandwash').textContent=fS(handwash);
-  setText('smAccomCost',fC(accom));setText('smAccomPP',people>0?fC(accom/people):'—');
-  setText('smDiningCost',fC(dining));setText('smDiningPP',people>0?fC(dining/people):'—');
-  setText('smToiletsCost',fC(toilets));setText('smToiletsPP',people>0?fC(toilets/people):'—');
-  setText('smHandwashCost',fC(handwash));setText('smHandwashPP',people>0?fC(handwash/people):'—');
+  document.getElementById('tabAccom').textContent=fS(accom);document.getElementById('tabDining').textContent=fS(dining);
+  document.getElementById('tabToilets').textContent=fS(toilets);document.getElementById('tabHandwash').textContent=fS(handwash);
+  setText('smAccomCost',fC(accom));setText('smAccomPP',people>0?fC(accom/people):'\u2014');
+  setText('smDiningCost',fC(dining));setText('smDiningPP',people>0?fC(dining/people):'\u2014');
+  setText('smToiletsCost',fC(toilets));setText('smToiletsPP',people>0?fC(toilets/people):'\u2014');
+  setText('smHandwashCost',fC(handwash));setText('smHandwashPP',people>0?fC(handwash/people):'\u2014');
   var mx=Math.max(accom,dining,toilets,handwash,1);
-  document.getElementById('wfbA').style.width=(accom/mx*100)+'%';document.getElementById('wfbD').style.width=(dining/mx*100)+'%';document.getElementById('wfbT2').style.width=(toilets/mx*100)+'%';document.getElementById('wfbHW').style.width=(handwash/mx*100)+'%';
+  document.getElementById('wfbA').style.width=(accom/mx*100)+'%';document.getElementById('wfbD').style.width=(dining/mx*100)+'%';
+  document.getElementById('wfbT2').style.width=(toilets/mx*100)+'%';document.getElementById('wfbHW').style.width=(handwash/mx*100)+'%';
   setText('wfvA',fC(accom));setText('wfvD',fC(dining));setText('wfvT2',fC(toilets));setText('wfvHW',fC(handwash));setText('wfvT',fC(grand));
   if(grand>0){setText('wfpA',(accom/grand*100).toFixed(1)+'%');setText('wfpD',(dining/grand*100).toFixed(1)+'%');setText('wfpT2',(toilets/grand*100).toFixed(1)+'%');setText('wfpHW',(handwash/grand*100).toFixed(1)+'%')}
-  else{setText('wfpA','—');setText('wfpD','—');setText('wfpT2','—');setText('wfpHW','—')}
+  else{setText('wfpA','\u2014');setText('wfpD','\u2014');setText('wfpT2','\u2014');setText('wfpHW','\u2014')}
   updateAll();
 }
 
 function updateAll(){
-  var people=+(document.getElementById('numPeople').value)||0;
-  var grand=AS['grandTotal']||0;
-  var client=document.getElementById('clientName').value||'—';
-  var loc=document.getElementById('location').value||'—';
-  document.getElementById('mhClient').textContent=client!=='—'?client:'Unified Dashboard';
-  setText('sClient',client);setText('sPeople',fN(people)+' personnel');
+  var people=+(document.getElementById('numPeople').value)||0;var grand=AS['grandTotal']||0;
+  var loc=document.getElementById('location').value||'\u2014';
+  setText('sPeople',fN(people)+' personnel');
   setText('sMaterial',document.getElementById('a_materials').value);
   setText('sPpt',gv('a_ppt')+' people/tent');setText('sLocation',loc);
-  setText('sTotal',fC(grand)+' USD');setText('sPP',people>0?fC(grand/people)+' USD':'—');
+  setText('sTotal',fC(grand)+' USD');setText('sPP',people>0?fC(grand/people)+' USD':'\u2014');
 }
 
 function gv(id){return document.getElementById(id).value||0}
@@ -559,7 +333,6 @@ function setText(id,v){var e=document.getElementById(id);if(e)e.textContent=v}
 function fC(n){return Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
 function fN(n){return Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0})}
 function fS(n){return n>1e6?' '+fN(n/1e6)+'M':n>1e3?' '+fN(n/1e3)+'K':' '+fN(n)}
-
 calcAll();
 </script>
 </body>
